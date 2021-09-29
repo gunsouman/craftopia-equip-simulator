@@ -1,0 +1,523 @@
+body{
+	background: #ececec;
+}
+
+.App {
+	text-align: center;
+	font-family: 'メイリオ', 'Meiryo', sans-serif;
+	color: #333;
+	font-size: 13px;
+}
+a {
+	color: #4b8bff;
+}
+thead, .headTable {
+	font-weight: bold;
+	color: #a2a2a2;
+}
+.headTable>* {
+	vertical-align: middle;
+}
+
+article {
+	padding: 4px;
+	background: #ffffff;
+	color: #333;
+	box-shadow: 3px 4px 11px 0px #0000002e;
+	border: 1px solid #ececec;
+}
+
+input {
+	border: 1px solid #ababab;
+	border-radius: 2px;
+}
+header {
+	background: #101010;
+	color: #eee;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px;
+}
+footer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: #222;
+	color: #eee;
+	padding: 4px 0 7px 0;;
+	font-size: 12px;
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+.scrollButton {
+	position: sticky;
+	top: 0px;
+	z-index: 100;
+}
+.scrollButton>* {
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+.scrollButton>*>* {
+	padding: 5px;
+	margin-bottom: 8px;
+	background: #fff;
+	min-height: 90px;
+	writing-mode: vertical-rl;
+	cursor: pointer;
+	box-shadow: -1px 5px 11px 0px #0000002e;
+	border: 1px solid #ececec;
+}
+.scrollButton>*>*:hover {
+	color: orange;
+	background: rgb(255 249 181);
+	animation: 0.4s hoverSwitch3;
+}
+@keyframes hoverSwitch3 {
+	from {
+		background: #fff;
+		color: #505050;
+	}
+	to {
+		color: orange;
+		background: rgb(255 249 181);
+	}
+}
+.scrollButton>*>*:active {
+	background: rgb(253, 233, 50);
+	color: rgb(255, 115, 115);
+	animation: 0.1s clickSwitch3;
+}
+@keyframes clickSwitch3 {
+	from {}
+	to {
+		background: rgb(253, 233, 50);
+		color: rgb(255, 115, 115);
+	}
+}
+.equipTableCell {
+	display: table-cell;
+}
+.equipTableCell.right .equipTableSection {
+	right: 0
+}
+section.equipSelectors {
+	/* width: 65%; */
+	position: relative;
+	display: table;
+	display: flex;
+	justify-content: space-evenly;
+	margin: 0 20px;
+}
+section.main {
+	display: flex;
+	justify-content: center;
+	padding: 10px 0;
+}
+section.main>* {
+	display: flex;
+	justify-content: space-between;
+	/* overflow: auto; */
+}
+section.status {
+	display: table-cell;
+	padding: 0 0 0 20px;
+}
+
+article.basicStatus {
+	margin-bottom: 10px;
+}
+article.totalStatus {
+	
+}
+article.basicStatus>table {
+	white-space: nowrap;
+	width: 100%;
+}
+article.totalStatus>table {
+	white-space: nowrap;
+	width: 100%;
+}
+article.totalStatus>table>tbody>tr>td:nth-child(5) {
+	font-weight: bold;
+}
+article .title {
+	background: #ff8935;
+	color: #fff;
+	font-size: 15px;
+}
+.over {
+	color: red;
+	font-weight: bold;
+}
+/* .body{
+  display: block;
+  margin: auto;
+  width: 300px;
+} */
+
+/* .equipment_frame{
+  position: absolute;
+} */
+
+.select_find {
+	width: 200px;
+}
+.option {
+	display: "table-row";
+}
+.option>* {
+	display: "table-cell";
+	background: "red";
+	text-align: 'left',
+}
+.fileFrame.targetSavedata {
+	/* border: 5px solid rgb(80 247 255 / 60%); */
+}
+.fileFrame {
+	display: flex;
+}
+.saveSection {
+	position: relative;
+	padding: 7px;
+	border-bottom: 1px solid #dedede;
+	background: #ffffff;
+}
+.saveSection>* {
+	padding: 0 20px;
+}
+.saveSection>*>* {
+	padding: 0 20px;
+	display: inline-block;
+}
+.saveSection input {
+	background: #fff;
+	color: #505050;
+	border: 1px solid #bdbdbd;
+	border-radius: 3px;
+	width: 60px;
+	padding:2px;
+	cursor: pointer;
+}
+.saveSection .fileButton {
+	margin-right: 10px;
+}
+.saveSection .saveButton {}
+.saveSection .fileButton:hover, .saveSection .saveButton:hover {
+	background: rgb(255 249 181);
+	color: orange;
+	border: 1px solid orange;
+	animation: 0.4s hoverSwitch1;
+}
+@keyframes hoverSwitch1 {
+	from {
+		background: #fff;
+		color: #505050;
+		border: 1px solid #bdbdbd;
+	}
+	to {
+		color: orange;
+		background: rgb(255 249 181);
+		border: 1px solid orange;
+	}
+}
+.saveSection .fileButton:active, .saveSection .saveButton:active {
+	background: rgb(253, 233, 50);
+	color: rgb(255, 115, 115);
+	animation: 0.1s clickSwitch1;
+}
+@keyframes clickSwitch1 {
+	from {}
+	to {
+		background: rgb(253, 233, 50);
+		color: rgb(255, 115, 115);
+		border: 1px solid orange;
+	}
+}
+.saveSection .clearButton {
+	position: absolute;
+	top: calc( 50% - 11px);
+	right: 10px;
+	margin-right: 10px;
+	width: 70px;
+}
+.saveSection .clearButton:hover {
+	background: rgb(230 240 255);
+	color: rgb(103, 151, 255);
+	border: 1px solid rgb(103, 151, 255);
+	animation: 0.4s hoverSwitch2;
+}
+@keyframes hoverSwitch2 {
+	from {
+		background: #fff;
+		color: #505050;
+		border: 1px solid #bdbdbd;
+	}
+	to {
+		background: rgb(230 240 255);
+		color: rgb(103, 151, 255);
+		border: 1px solid rgb(103, 151, 255);
+	}
+}
+.saveSection .clearButton:active {
+	background: rgb(127, 168, 255);
+	color: rgb(11, 89, 255);
+	border: rgb(11, 89, 255);
+	animation: 0.1s clickSwitch2;
+}
+@keyframes clickSwitch2 {
+	from {}
+	to {
+		background: rgb(127, 168, 255);
+		color: rgb(11, 89, 255);
+		border: rgb(11, 89, 255);
+	}
+}
+
+article.enchantDetail {
+	min-width: calc( 100% - 190px);
+	margin: 10px auto 20px auto;
+	width: 90%;
+}
+article.enchantDetail>div {
+}
+article.enchantDetail table {
+	width: 100%;
+	font-size: 14px;
+	border-collapse: collapse;
+	margin: 4px auto;
+	width: calc( 100% - 10px);
+}
+article.enchantDetail thead {
+	font-size: 13px;
+}
+article.enchantDetail thead>tr {
+	border-bottom: solid 1px #909090;
+}
+article.enchantDetail thead>tr>th {
+	padding: 1px;
+	border-right: solid 1px #909090;
+}
+article.enchantDetail thead>tr>th:last-child {
+	border-right: none;
+}
+article.enchantDetail tbody>tr {
+	border-bottom: solid 1px #d4d4d4;
+}
+article.enchantDetail tbody>tr:last-child {
+	border-bottom: none;
+}
+article.enchantDetail tbody>tr>td {
+	border-right: solid 1px #909090;
+}
+article.enchantDetail tbody>tr>td:last-child {
+	border-right: none;
+}
+@keyframes openTable {
+	from {
+		opacity: 0
+	}
+	to {
+		opacity: 1
+	}
+}
+
+.enchantInfoBalloon{
+	position: absolute;
+    padding: 2px;
+    background-color: rgb(152 126 255 / 60%);
+    color: #ffffffcc;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 200;
+    padding-right: 5px;
+    text-align: left;
+    animation: 0.2s openTable;
+}
+
+.equipInfo .overOriginMaterial,
+.equipTableSection .overOriginMaterial{
+	display:none;
+	border: none;
+	background-color: rgb(152 126 255 / 80%);
+	color: #ffffffcc;
+	box-shadow: 2px 2px 4px 0px #0000002e;
+	z-index: 100;
+	position: absolute;
+	right: 100%;
+	white-space: nowrap;
+	font-size: 12px;
+	animation: 0.2s openTable;
+	padding: 3px;
+}
+.equipInfo:hover .overOriginMaterial,
+.equipTableSection:hover .overOriginMaterial {
+	display: inline;                /* インライン要素として表示 */
+}
+
+.equipInfo .overOriginMaterial>*,
+.equipTableSection .overOriginMaterial>*{
+	padding: 0 4px;
+	border-bottom: solid 1px #ececec;
+}
+
+.equipInfo .overOriginMaterial>.headTable,
+.equipTableSection .overOriginMaterial>.headTable{
+	border-bottom: 1px solid #ececec;
+	color: #f1f1f1;
+}
+
+section.equipTableSection tbody tr:hover,
+section.enchantTableSection tbody tr:hover {
+	background: #ff9900d9;
+}
+
+section.history{
+	margin: 10px auto 25px auto;
+	width: 90%;
+}
+
+section.history .log{
+    width: calc( 100% - 20px );
+	text-align: left;
+    margin: 10px auto;
+    height: 100px;
+    overflow-y: scroll;
+    background: #f5f5f5;
+	color:#333;
+	padding: 5px;
+}
+
+section.unimplemented{
+	margin: 10px auto 55px auto;
+	width: 90%;
+}
+section.unimplemented ul{
+	text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+	.fileFrame {
+		display:block;
+		padding: 5px;
+	}
+	.saveSection>*>*{
+		display: block;
+	}
+	.saveSection input{
+		padding: 11px;
+	}
+	.saveSection .fileButton {
+		margin-right: 20px;
+	}
+	.saveSection>.clearButton{
+		margin-right: 0px;;
+	}
+	section.main {
+		display: block;
+		padding: 10px 30px 0 5px;
+	}
+	section.main>* {
+		display: block;
+	}
+	section.status {
+		display: block;
+		padding: 0;
+	}
+	article.totalStatus {
+		overflow-x: auto;
+	}
+	section.equipSelectors {
+		display: block;
+		margin: 20px 0 0 0;
+	}
+	.equipmentFrame{
+		margin: 0px 0px 10px 0px;
+	}
+	.inputEnchant{
+		width: 55%;
+	}
+	.inputEnchant>input{
+		width:100%
+	}
+	.enchantment_list .enchantInfo{
+		margin-left: 20px;
+	}
+	article{
+		box-shadow: 3px 4px 11px 0px #000000b3;
+	}
+	.equipTableCell{
+		display: block;
+	}
+	article.enchantDetail{
+		margin: 10px 30px 0px 5px;
+		width:auto;
+	}
+	article.materialSection{
+		margin: 10px 30px 0px 5px;
+		width:auto;
+	}
+	
+}
+
+
+
+/*black*/
+body {
+	background: #31302e;
+}
+article {
+	/* background: #ffffff;
+	color: #333;
+	box-shadow: 3px 4px 11px 0px #0000002e;
+	border: 1px solid #ececec; */
+
+	background: #0000003d;
+	color: #dadada;
+	box-shadow: 3px 4px 11px 0px #00000099;
+	border: none;
+	/* border: 1px solid #656565; */
+}
+article thead{
+	/* color: #8b8b8b; */
+}
+article .title {
+    background: #ff974d26;
+    border: 1px solid #ff9a44ad;
+    color: #ff9a44;
+}
+.modalTable{
+	background: #212121f2;
+	/* border: 1px solid #adadad; */
+}
+.modalTable thead {
+    background: #212121f2;
+}
+input {
+    border: 1px solid #ababab;
+    background: #444;
+    color: #d8d8d8;
+}
+
+*::-webkit-scrollbar{
+	width: 10px;
+	height: 10px;
+}
+*::-webkit-scrollbar-track{
+	background: rgb(31, 31, 31);
+}
+*::-webkit-scrollbar-thumb{
+	background: #444;
+	border-radius: 10px;
+}

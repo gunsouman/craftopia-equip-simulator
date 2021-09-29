@@ -1,0 +1,102 @@
+.equipmentFrame{
+  position: relative;
+  padding: 4px;
+  margin: 0px 10px 10px 10px;
+  font-size:13px;
+  min-width: 260px;
+}
+
+.inputEnchant{
+  display: inline-block;
+}
+
+/* .inputEnchant>input{
+} */
+
+.equipName{
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+}
+/* 
+.equipStatus{
+
+} */
+
+
+
+.inputEquip{
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.inputEquip>input{
+  width: calc( 100% - 20px);
+}
+
+.equipFrame input{
+  border: 1px solid #ababab;
+  border-radius: 1px;
+}
+
+.enchantment_list{
+  text-align: left;
+  margin-left: 15px;
+}
+
+.enchantment_list>*{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-bottom: 3px;
+}
+
+.equipInfo{
+  color: #a2a2a2;
+  padding: 7px 0 2px 0;
+  height: 38px;
+}
+
+.equipInfo .overOriginMaterial{
+	right: 97%;
+}
+
+.enchantInfo{
+  line-height: 15px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+
+.enchantInfo>.balloon {
+  position   : absolute;
+  display: none;                        /* 要素を非表示 */
+  padding: 2px;
+  background-color: rgb(152 126 255 / 60%);
+  color: #ffffffcc;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  padding-right: 5px;
+  animation: 0.2s openTable;
+}
+.enchantInfo:hover .balloon {
+  display: inline;                /* インライン要素として表示 */
+}
+
+
+.clearEquip{
+  width: 15px;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clearEnchant{
+  width: 15px;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+}

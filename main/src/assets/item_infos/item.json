@@ -1,0 +1,910 @@
+{
+	"鉄のインゴット": {
+		"アイテム名": "鉄のインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c5%b4%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"鉄鉱石": 1
+		}
+	},
+	"ガラス": {
+		"アイテム名": "ガラス",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ac%a5%e9%a5%b9",
+		"materials": {
+			"砂": 5
+		}
+	},
+	"銀のインゴット": {
+		"アイテム名": "銀のインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b6%e4%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"銀鉱石": 1
+		}
+	},
+	"石": {
+		"アイテム名": "石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c0%d0",
+		"materials": {}
+	},
+	"銅のインゴット": {
+		"アイテム名": "銅のインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%bc%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"銅鉱石": 1
+		}
+	},
+	"ボルト": {
+		"アイテム名": "ボルト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%dc%a5%eb%a5%c8",
+		"materials": {
+			"形状記憶合金": 2,
+			"銀のインゴット": 2
+		}
+	},
+	"鋼鉄のインゴット": {
+		"アイテム名": "鋼鉄のインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%dd%c5%b4%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"鉄のインゴット": 5
+		}
+	},
+	"チタンのインゴット": {
+		"アイテム名": "チタンのインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%c1%a5%bf%a5%f3%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"チタン鉱石": 1
+		}
+	},
+	"スプリング": {
+		"アイテム名": "スプリング",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b9%a5%d7%a5%ea%a5%f3%a5%b0",
+		"materials": {
+			"形状記憶合金": 2,
+			"銀のインゴット": 2
+		}
+	},
+	"ゴム": {
+		"アイテム名": "ゴム",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b4%a5%e0",
+		"materials": {}
+	},
+	"黒色火薬": {
+		"アイテム名": "黒色火薬",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%f5%bf%a7%b2%d0%cc%f4",
+		"materials": {
+			"硫黄": 1,
+			"硝石": 1,
+			"木炭": 1
+		}
+	},
+	"角": {
+		"アイテム名": "角",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b3%d1",
+		"materials": {}
+	},
+	"骨": {
+		"アイテム名": "骨",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%fc",
+		"materials": {}
+	},
+	"貝": {
+		"アイテム名": "貝",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b3%ad",
+		"materials": {}
+	},
+	"卵": {
+		"アイテム名": "卵",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cd%f1",
+		"materials": {}
+	},
+	"きのこ": {
+		"アイテム名": "きのこ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a4%ad%a4%ce%a4%b3",
+		"materials": {}
+	},
+	"高級切り身": {
+		"アイテム名": "高級切り身",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%e2%b5%e9%c0%da%a4%ea%bf%c8",
+		"materials": {}
+	},
+	"魚の切り身": {
+		"アイテム名": "魚の切り身",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b5%fb%a4%ce%c0%da%a4%ea%bf%c8",
+		"materials": {}
+	},
+	"火種の心核": {
+		"アイテム名": "火種の心核",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b2%d0%bc%ef%a4%ce%bf%b4%b3%cb",
+		"materials": {}
+	},
+	"熱血のアミュレットLv1": {
+		"アイテム名": "熱血のアミュレットLv1",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c7%ae%b7%ec%a4%ce%a5%a2%a5%df%a5%e5%a5%ec%a5%c3%a5%c8Lv1",
+		"materials": {
+			"黒色火薬": 1,
+			"角": 1,
+			"骨": 1,
+			"鋼鉄のインゴット": 2
+		}
+	},
+	"病原の心核": {
+		"アイテム名": "病原の心核",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c9%c2%b8%b6%a4%ce%bf%b4%b3%cb",
+		"materials": {}
+	},
+	"免疫のアミュレットLv1": {
+		"アイテム名": "免疫のアミュレットLv1",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%c8%b1%d6%a4%ce%a5%a2%a5%df%a5%e5%a5%ec%a5%c3%a5%c8Lv1",
+		"materials": {
+			"貝": 3,
+			"卵": 3,
+			"きのこ": 3,
+			"鋼鉄のインゴット": 2
+		}
+	},
+	"氷晶の心核": {
+		"アイテム名": "氷晶の心核",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c9%b9%be%bd%a4%ce%bf%b4%b3%cb",
+		"materials": {}
+	},
+	"冷徹のアミュレットLv1": {
+		"アイテム名": "冷徹のアミュレットLv1",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ce%e4%c5%b0%a4%ce%a5%a2%a5%df%a5%e5%a5%ec%a5%c3%a5%c8Lv1",
+		"materials": {
+			"高級切り身": 1,
+			"魚の切り身": 1,
+			"貝": 1,
+			"鋼鉄のインゴット": 2
+		}
+	},
+	"雪": {
+		"アイテム名": "雪",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c0%e3",
+		"materials": {}
+	},
+	"解毒きのこ": {
+		"アイテム名": "解毒きのこ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b2%f2%c6%c7%a4%ad%a4%ce%a4%b3",
+		"materials": {}
+	},
+	"吸血の記憶片": {
+		"アイテム名": "吸血の記憶片",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b5%db%b7%ec%a4%ce%b5%ad%b2%b1%ca%d2",
+		"materials": {}
+	},
+	"革": {
+		"アイテム名": "革",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b3%d7",
+		"materials": {}
+	},
+	"与一の記憶片": {
+		"アイテム名": "与一の記憶片",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cd%bf%b0%ec%a4%ce%b5%ad%b2%b1%ca%d2",
+		"materials": {}
+	},
+	"牙": {
+		"アイテム名": "牙",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b2%e7",
+		"materials": {}
+	},
+	"英知の記憶片": {
+		"アイテム名": "英知の記憶片",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b1%d1%c3%ce%a4%ce%b5%ad%b2%b1%ca%d2",
+		"materials": {}
+	},
+	"鳥の羽根": {
+		"アイテム名": "鳥の羽根",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c4%bb%a4%ce%b1%a9%ba%ac",
+		"materials": {}
+	},
+	"熱を帯びた鉱物": {
+		"アイテム名": "熱を帯びた鉱物",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c7%ae%a4%f2%c2%d3%a4%d3%a4%bf%b9%db%ca%aa",
+		"materials": {}
+	},
+	"フェンリルの氷晶": {
+		"アイテム名": "フェンリルの氷晶",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d5%a5%a7%a5%f3%a5%ea%a5%eb%a4%ce%c9%b9%be%bd",
+		"materials": {}
+	},
+	"原木": {
+		"アイテム名": "原木",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b8%b6%cc%da",
+		"materials": {}
+	},
+	"グリフォンの羽根": {
+		"アイテム名": "グリフォンの羽根",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b0%a5%ea%a5%d5%a5%a9%a5%f3%a4%ce%b1%a9%ba%ac",
+		"materials": {}
+	},
+	"羽が少ないグリフォンの翼": {
+		"アイテム名": "羽が少ないグリフォンの翼",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b1%a9%a4%ac%be%af%a4%ca%a4%a4%a5%b0%a5%ea%a5%d5%a5%a9%a5%f3%a4%ce%cd%e3",
+		"materials": {
+			"グリフォンの羽根": 40,
+			"原木": 8
+		}
+	},
+	"金のインゴット": {
+		"アイテム名": "金のインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b6%e2%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"金鉱石": 1
+		}
+	},
+	"プラチナのインゴット": {
+		"アイテム名": "プラチナのインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d7%a5%e9%a5%c1%a5%ca%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"プラチナ": 1
+		}
+	},
+	"ダイヤのインゴット": {
+		"アイテム名": "ダイヤのインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%c0%a5%a4%a5%e4%a4%ce%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"ダイヤ": 1
+		}
+	},
+	"わら": {
+		"アイテム名": "わら",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a4%ef%a4%e9",
+		"materials": {}
+	},
+	"バイオプラスチック": {
+		"アイテム名": "バイオプラスチック",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d0%a5%a4%a5%aa%a5%d7%a5%e9%a5%b9%a5%c1%a5%c3%a5%af",
+		"materials": {
+			"サトウキビ": 20,
+			"バイオエタノール": 5
+		}
+	},
+	"セラミック": {
+		"アイテム名": "セラミック",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%bb%a5%e9%a5%df%a5%c3%a5%af",
+		"materials": {
+			"粘土": 2,
+			"原木": 2
+		}
+	},
+	"形状記憶合金": {
+		"アイテム名": "形状記憶合金",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b7%c1%be%f5%b5%ad%b2%b1%b9%e7%b6%e2",
+		"materials": {
+			"チタンのインゴット": 1,
+			"レアメタル": 1
+		}
+	},
+	"硬い原木": {
+		"アイテム名": "硬い原木",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%c5%a4%a4%b8%b6%cc%da",
+		"materials": {}
+	},
+	"木炭": {
+		"アイテム名": "木炭",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%da%c3%ba",
+		"materials": {
+			"原木": 1
+		}
+	},
+	"歯車": {
+		"アイテム名": "歯車",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bb%f5%bc%d6",
+		"materials": {
+			"鉄のインゴット": 2
+		}
+	},
+	"電池": {
+		"アイテム名": "電池",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c5%c5%c3%d3",
+		"materials": {}
+	},
+	"爪": {
+		"アイテム名": "爪",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c4%de",
+		"materials": {}
+	},
+	"ぼろ布": {
+		"アイテム名": "ぼろ布",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a4%dc%a4%ed%c9%db",
+		"materials": {
+			"わら": 2
+		}
+	},
+	"殻": {
+		"アイテム名": "殻",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b3%cc",
+		"materials": {}
+	},
+	"捕まえた村人男6": {
+		"アイテム名": "捕まえた村人男6",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c2%bc%bf%cd%c3%cb1%a1%c110",
+		"materials": {}
+	},
+	"捕まえた村人男7": {
+		"アイテム名": "捕まえた村人男7",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c2%bc%bf%cd%c3%cb1%a1%c110",
+		"materials": {}
+	},
+	"捕まえた村人男9": {
+		"アイテム名": "捕まえた村人男9",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c2%bc%bf%cd%c3%cb1%a1%c110",
+		"materials": {}
+	},
+	"騎士剣": {
+		"アイテム名": "騎士剣",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b5%b3%bb%ce%b7%f5",
+		"materials": {
+			"鉄のインゴット": 30,
+			"爪": 2
+		}
+	},
+	"水晶": {
+		"アイテム名": "水晶",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bf%e5%be%bd",
+		"materials": {}
+	},
+	"重鋼鉄インゴット": {
+		"アイテム名": "重鋼鉄インゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bd%c5%b9%dd%c5%b4%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"鋼鉄のインゴット": 1,
+			"レアメタル": 1
+		}
+	},
+	"掘り出し物の武具部品": {
+		"アイテム名": "掘り出し物の武具部品",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b7%a1%a4%ea%bd%d0%a4%b7%ca%aa%a4%ce%c9%f0%b6%f1%c9%f4%c9%ca",
+		"materials": {}
+	},
+	"炎剣スルト": {
+		"アイテム名": "炎剣スルト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b1%ea%b7%f5%a5%b9%a5%eb%a5%c8",
+		"materials": {
+			"炎剣スルト": 1,
+			"魔導石": 1
+		}
+	},
+	"魔導石": {
+		"アイテム名": "魔導石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cb%e2%c6%b3%c0%d0",
+		"materials": {}
+	},
+	"竜の鱗": {
+		"アイテム名": "竜の鱗",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ce%b5%a4%ce%ce%da",
+		"materials": {}
+	},
+	"処刑人の鱗": {
+		"アイテム名": "処刑人の鱗",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bd%e8%b7%ba%bf%cd%a4%ce%ce%da",
+		"materials": {}
+	},
+	"死神の霊鱗": {
+		"アイテム名": "死神の霊鱗",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bb%e0%bf%c0%a4%ce%ce%ee%ce%da",
+		"materials": {}
+	},
+	"コットンキャンバス": {
+		"アイテム名": "コットンキャンバス",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b3%a5%c3%a5%c8%a5%f3%a5%ad%a5%e3%a5%f3%a5%d0%a5%b9",
+		"materials": {
+			"ぼろ布": 5
+		}
+	},
+	"アルミニウムインゴット": {
+		"アイテム名": "アルミニウムインゴット",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%a2%a5%eb%a5%df%a5%cb%a5%a6%a5%e0%a5%a4%a5%f3%a5%b4%a5%c3%a5%c8",
+		"materials": {
+			"ボーキサイト": 1
+		}
+	},
+	"エレメンタルダスト": {
+		"アイテム名": "エレメンタルダスト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%a8%a5%ec%a5%e1%a5%f3%a5%bf%a5%eb%a5%c0%a5%b9%a5%c8",
+		"materials": {}
+	},
+	"羊毛": {
+		"アイテム名": "羊毛",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cd%d3%cc%d3",
+		"materials": {}
+	},
+	"硬い革": {
+		"アイテム名": "硬い革",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%c5%a4%a4%b3%d7",
+		"materials": {}
+	},
+	"プラチナの弓": {
+		"アイテム名": "プラチナの弓",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d7%a5%e9%a5%c1%a5%ca%a4%ce%b5%dd",
+		"materials": {
+			"プラチナのインゴット": 10,
+			"原木": 10,
+			"革": 2,
+			"骨": 2
+		}
+	},
+	"サジタリウスの弓": {
+		"アイテム名": "サジタリウスの弓",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b5%a5%b8%a5%bf%a5%ea%a5%a6%a5%b9%a4%ce%b5%dd",
+		"materials": {
+			"サジタリウスの弓": 1,
+			"魔導石": 1
+		}
+	},
+	"木の矢": {
+		"アイテム名": "木の矢",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%da%a4%ce%cc%f0",
+		"materials": {
+			"石": 1,
+			"原木": 1
+		}
+	},
+	"毒薬": {
+		"アイテム名": "毒薬",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%c7%cc%f4",
+		"materials": {
+			"毒きのこ": 5
+		}
+	},
+	"猛毒薬": {
+		"アイテム名": "猛毒薬",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%d4%c6%c7%cc%f4",
+		"materials": {
+			"猛毒きのこ": 5
+		}
+	},
+	"紙": {
+		"アイテム名": "紙",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bb%e6",
+		"materials": {
+			"わら": 5,
+			"水": 1
+		}
+	},
+	"弾丸素材": {
+		"アイテム名": "弾丸素材",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c3%c6%b4%dd%c1%c7%ba%e0",
+		"materials": {
+			"レアメタル": 1,
+			"銅のインゴット": 1
+		}
+	},
+	"ガンパウダー": {
+		"アイテム名": "ガンパウダー",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ac%a5%f3%a5%d1%a5%a6%a5%c0%a1%bc",
+		"materials": {
+			"黒色火薬": 1,
+			"バイオエタノール": 1
+		}
+	},
+	"電子回路": {
+		"アイテム名": "電子回路",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c5%c5%bb%d2%b2%f3%cf%a9",
+		"materials": {
+			"アルミニウムインゴット": 1,
+			"水晶": 2,
+			"銅のインゴット": 2,
+			"セラミック": 4,
+			"形状記憶合金": 1
+		}
+	},
+	"TNT": {
+		"アイテム名": "TNT",
+		"URL": "https://seesaawiki.jp/craftopia/d/TNT",
+		"materials": {
+			"黒色火薬": 5,
+			"砂": 4,
+			"キングモノの体液": 1
+		}
+	},
+	"流紋岩": {
+		"アイテム名": "流紋岩",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ce%ae%cc%e6%b4%e4",
+		"materials": {}
+	},
+	"象牙": {
+		"アイテム名": "象牙",
+		"URL": "https://seesaawiki.jp/craftopia/d/%be%dd%b2%e7",
+		"materials": {}
+	},
+	"炎の矢": {
+		"アイテム名": "炎の矢",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b1%ea%a4%ce%cc%f0",
+		"materials": {
+			"木炭": 1,
+			"木の矢": 1
+		}
+	},
+	"鉄鉱石": {
+		"アイテム名": "鉄鉱石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c5%b4%b9%db%c0%d0",
+		"materials": {}
+	},
+	"タイラントスネークの毒牙": {
+		"アイテム名": "タイラントスネークの毒牙",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%bf%a5%a4%a5%e9%a5%f3%a5%c8%a5%b9%a5%cd%a1%bc%a5%af%a4%ce%c6%c7%b2%e7",
+		"materials": {}
+	},
+	"棘": {
+		"アイテム名": "棘",
+		"URL": "https://seesaawiki.jp/craftopia/d/%db%f9",
+		"materials": {}
+	},
+	"毒槍ナーガIV": {
+		"アイテム名": "毒槍ナーガIV",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%c7%c1%e4%a5%ca%a1%bc%a5%acIV",
+		"materials": {
+			"タイラントスネークの毒牙": 50,
+			"棘": 5,
+			"鋼鉄のインゴット": 5,
+			"毒薬": 10,
+			"猛毒薬": 1
+		}
+	},
+	"毒の棘": {
+		"アイテム名": "毒の棘",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%c7%a4%ce%db%f9",
+		"materials": {}
+	},
+	"巨獣の骨粉": {
+		"アイテム名": "巨獣の骨粉",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b5%f0%bd%c3%a4%ce%b9%fc%ca%b4",
+		"materials": {}
+	},
+	"フルールの花びら": {
+		"アイテム名": "フルールの花びら",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d5%a5%eb%a1%bc%a5%eb%a4%ce%b2%d6%a4%d3%a4%e9",
+		"materials": {}
+	},
+	"赤のハーブ": {
+		"アイテム名": "赤のハーブ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c0%d6%a4%ce%a5%cf%a1%bc%a5%d6",
+		"materials": {}
+	},
+	"紅蓮のハーブ": {
+		"アイテム名": "紅蓮のハーブ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%c8%cf%a1%a4%ce%a5%cf%a1%bc%a5%d6",
+		"materials": {}
+	},
+	"硬い爪": {
+		"アイテム名": "硬い爪",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b9%c5%a4%a4%c4%de",
+		"materials": {}
+	},
+	"氷": {
+		"アイテム名": "氷",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c9%b9",
+		"materials": {}
+	},
+	"フラワースタッフIV": {
+		"アイテム名": "フラワースタッフIV",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d5%a5%e9%a5%ef%a1%bc%a5%b9%a5%bf%a5%c3%a5%d5IV",
+		"materials": {
+			"フルールの花びら": 50,
+			"原木": 15,
+			"毒の棘": 5
+		}
+	},
+	"ブルーローズエッジIV": {
+		"アイテム名": "ブルーローズエッジIV",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d6%a5%eb%a1%bc%a5%ed%a1%bc%a5%ba%a5%a8%a5%c3%a5%b8IV",
+		"materials": {
+			"硬い爪": 25,
+			"氷": 5,
+			"プラチナのインゴット": 5
+		}
+	},
+	"無心流鎖鎌III": {
+		"アイテム名": "無心流鎖鎌III",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%b5%bf%b4%ce%ae%ba%bf%b3%f9III",
+		"materials": {
+			"無心流鎖鎌III": 1,
+			"魔導石": 1
+		}
+	},
+	"プラチナの盾": {
+		"アイテム名": "プラチナの盾",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d7%a5%e9%a5%c1%a5%ca%a4%ce%bd%e2",
+		"materials": {
+			"プラチナのインゴット": 10,
+			"原木": 10
+		}
+	},
+	"フリントロックカービン": {
+		"アイテム名": "フリントロックカービン",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d5%a5%ea%a5%f3%a5%c8%a5%ed%a5%c3%a5%af%a5%ab%a1%bc%a5%d3%a5%f3",
+		"materials": {
+			"鋼鉄のインゴット": 5,
+			"ボルト": 10,
+			"スプリング": 10
+		}
+	},
+	"フリントロックリボルバー": {
+		"アイテム名": "フリントロックリボルバー",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d5%a5%ea%a5%f3%a5%c8%a5%ed%a5%c3%a5%af%a5%ea%a5%dc%a5%eb%a5%d0%a1%bc",
+		"materials": {
+			"フリントロックカービン": 1,
+			"鋼鉄のインゴット": 10
+		}
+	},
+	"掘り出し物の機械部品": {
+		"アイテム名": "掘り出し物の機械部品",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b7%a1%a4%ea%bd%d0%a4%b7%ca%aa%a4%ce%b5%a1%b3%a3%c9%f4%c9%ca",
+		"materials": {}
+	},
+	"銃砲身": {
+		"アイテム名": "銃砲身",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bd%c6%cb%a4%bf%c8",
+		"materials": {
+			"重鋼鉄インゴット": 10
+		}
+	},
+	"ライフルI": {
+		"アイテム名": "ライフルI",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%e9%a5%a4%a5%d5%a5%ebI",
+		"materials": {
+			"フリントロックリボルバー": 1,
+			"掘り出し物の機械部品": 1,
+			"硬い原木": 1,
+			"銃砲身": 1
+		}
+	},
+	"ガンパーツ": {
+		"アイテム名": "ガンパーツ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ac%a5%f3%a5%d1%a1%bc%a5%c4",
+		"materials": {
+			"重鋼鉄インゴット": 10,
+			"ボルト": 30,
+			"スプリング": 30,
+			"ゴム": 10,
+			"掘り出し物の機械部品": 5
+		}
+	},
+	"死霊の証": {
+		"アイテム名": "死霊の証",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bb%e0%ce%ee%a4%ce%be%da",
+		"materials": {}
+	},
+	"鷲獅子の証": {
+		"アイテム名": "鷲獅子の証",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cf%c9%bb%e2%bb%d2%a4%ce%be%da",
+		"materials": {}
+	},
+	"ショットガンI": {
+		"アイテム名": "ショットガンI",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b7%a5%e7%a5%c3%a5%c8%a5%ac%a5%f3I",
+		"materials": {
+			"ライフルI": 1,
+			"ガンパーツ": 1
+		}
+	},
+	"コハク": {
+		"アイテム名": "コハク",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b3%a5%cf%a5%af",
+		"materials": {}
+	},
+	"バイオエタノール": {
+		"アイテム名": "バイオエタノール",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d0%a5%a4%a5%aa%a5%a8%a5%bf%a5%ce%a1%bc%a5%eb",
+		"materials": {
+			"小麦粉": 10
+		}
+	},
+	"ニンジン": {
+		"アイテム名": "ニンジン",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%cb%a5%f3%a5%b8%a5%f3",
+		"materials": {}
+	},
+	"シチュー": {
+		"アイテム名": "シチュー",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b7%a5%c1%a5%e5%a1%bc",
+		"materials": {
+			"ケモノ肉": 1,
+			"ニンジン": 1,
+			"タマネギ": 1,
+			"ポテト": 1,
+			"ミルク": 1
+		}
+	},
+	"野菜炒め": {
+		"アイテム名": "野菜炒め",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%ee%ba%da%df%d6%a4%e1",
+		"materials": {
+			"ニンジン": 1,
+			"キャベツ": 1,
+			"タマネギ": 1,
+			"ナス": 1
+		}
+	},
+	"ポトフ": {
+		"アイテム名": "ポトフ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%dd%a5%c8%a5%d5",
+		"materials": {
+			"ケモノ肉": 1,
+			"キャベツ": 1,
+			"ニンジン": 1,
+			"タマネギ": 1
+		}
+	},
+	"捕まえたイノシシ": {
+		"アイテム名": "捕まえたイノシシ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%a4%a5%ce%a5%b7%a5%b7",
+		"materials": {}
+	},
+	"捕まえたキツネ": {
+		"アイテム名": "捕まえたキツネ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ad%a5%c4%a5%cd",
+		"materials": {}
+	},
+	"魔除けの旗": {
+		"アイテム名": "魔除けの旗",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cb%e2%bd%fc%a4%b1%a4%ce%b4%fa",
+		"materials": {
+			"原木": 2,
+			"革": 2,
+			"骨": 2
+		}
+	},
+	"カボチャくず": {
+		"アイテム名": "カボチャくず",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ab%a5%dc%a5%c1%a5%e3%a4%af%a4%ba",
+		"materials": {}
+	},
+	"キャンプファイア": {
+		"アイテム名": "キャンプファイア",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ad%a5%e3%a5%f3%a5%d7%a5%d5%a5%a1%a5%a4%a5%a2",
+		"materials": {
+			"石": 5,
+			"原木": 5
+		}
+	},
+	"水": {
+		"アイテム名": "水",
+		"URL": "https://seesaawiki.jp/craftopia/d/%bf%e5",
+		"materials": {
+			"バケツ（水）": 30
+		}
+	},
+	"トマト": {
+		"アイテム名": "トマト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%c8%a5%de%a5%c8",
+		"materials": {}
+	},
+	"砂": {
+		"アイテム名": "砂",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ba%bd",
+		"materials": {}
+	},
+	"銀鉱石": {
+		"アイテム名": "銀鉱石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b6%e4%b9%db%c0%d0",
+		"materials": {}
+	},
+	"銅鉱石": {
+		"アイテム名": "銅鉱石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%bc%b9%db%c0%d0",
+		"materials": {}
+	},
+	"チタン鉱石": {
+		"アイテム名": "チタン鉱石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%c1%a5%bf%a5%f3%b9%db%c0%d0",
+		"materials": {}
+	},
+	"硫黄": {
+		"アイテム名": "硫黄",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ce%b2%b2%ab",
+		"materials": {}
+	},
+	"硝石": {
+		"アイテム名": "硝石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%be%cb%c0%d0",
+		"materials": {
+			"糞": 2
+		}
+	},
+	"金鉱石": {
+		"アイテム名": "金鉱石",
+		"URL": "https://seesaawiki.jp/craftopia/d/%b6%e2%b9%db%c0%d0",
+		"materials": {}
+	},
+	"プラチナ": {
+		"アイテム名": "プラチナ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d7%a5%e9%a5%c1%a5%ca",
+		"materials": {}
+	},
+	"ダイヤ": {
+		"アイテム名": "ダイヤ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%c0%a5%a4%a5%e4",
+		"materials": {}
+	},
+	"サトウキビ": {
+		"アイテム名": "サトウキビ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b5%a5%c8%a5%a6%a5%ad%a5%d3",
+		"materials": {}
+	},
+	"粘土": {
+		"アイテム名": "粘土",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c7%b4%c5%da",
+		"materials": {
+			"砂": 2,
+			"水": 1
+		}
+	},
+	"レアメタル": {
+		"アイテム名": "レアメタル",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ec%a5%a2%a5%e1%a5%bf%a5%eb",
+		"materials": {}
+	},
+	"ボーキサイト": {
+		"アイテム名": "ボーキサイト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%dc%a1%bc%a5%ad%a5%b5%a5%a4%a5%c8",
+		"materials": {}
+	},
+	"毒きのこ": {
+		"アイテム名": "毒きのこ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%c6%c7%a4%ad%a4%ce%a4%b3",
+		"materials": {}
+	},
+	"猛毒きのこ": {
+		"アイテム名": "猛毒きのこ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%cc%d4%c6%c7%a4%ad%a4%ce%a4%b3",
+		"materials": {}
+	},
+	"キングモノの体液": {
+		"アイテム名": "キングモノの体液",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ad%a5%f3%a5%b0%a5%e2%a5%ce%a4%ce%c2%ce%b1%d5",
+		"materials": {}
+	},
+	"小麦粉": {
+		"アイテム名": "小麦粉",
+		"URL": "https://seesaawiki.jp/craftopia/d/%be%ae%c7%fe%ca%b4",
+		"materials": {
+			"小麦": 2
+		}
+	},
+	"ケモノ肉": {
+		"アイテム名": "ケモノ肉",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%b1%a5%e2%a5%ce%c6%f9",
+		"materials": {}
+	},
+	"タマネギ": {
+		"アイテム名": "タマネギ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%bf%a5%de%a5%cd%a5%ae",
+		"materials": {}
+	},
+	"ポテト": {
+		"アイテム名": "ポテト",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%dd%a5%c6%a5%c8",
+		"materials": {}
+	},
+	"ミルク": {
+		"アイテム名": "ミルク",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%df%a5%eb%a5%af",
+		"materials": {}
+	},
+	"キャベツ": {
+		"アイテム名": "キャベツ",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ad%a5%e3%a5%d9%a5%c4",
+		"materials": {}
+	},
+	"ナス": {
+		"アイテム名": "ナス",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%ca%a5%b9",
+		"materials": {}
+	},
+	"バケツ（水）": {
+		"アイテム名": "バケツ（水）",
+		"URL": "https://seesaawiki.jp/craftopia/d/%a5%d0%a5%b1%a5%c4%a1%ca%bf%e5%a1%cb",
+		"materials": {}
+	},
+	"糞": {
+		"アイテム名": "糞",
+		"URL": "https://seesaawiki.jp/craftopia/d/%ca%b5",
+		"materials": {}
+	},
+	"小麦": {
+		"アイテム名": "小麦",
+		"URL": "https://seesaawiki.jp/craftopia/d/%be%ae%c7%fe",
+		"materials": {}
+	}
+}

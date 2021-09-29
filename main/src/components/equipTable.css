@@ -1,0 +1,25 @@
+
+section.equipTableSection{
+  position: absolute;
+  z-index: 10;
+  font-size: 14px;
+  animation: 0.2s openTable;
+}
+
+section.equipTableSection thead {
+  cursor: pointer;
+  position: sticky;
+  top: 0;
+}
+
+section.equipTableSection tbody tr {
+  transition: background .5s;
+  cursor:pointer;
+}
+
+
+.tableMaster{
+  overflow-y: scroll;
+  height: 400px;
+  
+}

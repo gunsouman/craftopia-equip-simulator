@@ -1,0 +1,99 @@
+.materialSection {
+  position: relative;
+  margin: 10px 4px;
+  min-width: calc( 100% - 190px );
+  margin: 10px auto 55px auto;
+  width: 90%;
+}
+
+.materialSection .body{
+  overflow-x: auto;
+}
+
+.materialSection .table {
+  display: table;
+  border-collapse: collapse;
+  margin: 4px auto;
+  width: calc( 100% - 10px);
+}
+
+.materialTreeHead{
+  display: table-row;
+  border-bottom: solid 1px #909090;
+}
+
+.materialTreeHead>*{
+  display: table-cell;
+  padding: 1px;
+  border-right: solid 1px #909090;
+}
+.materialTreeHead>*:last-child{
+  border-right: none;
+}
+
+
+.materialTree{
+  display: table-row;
+  padding: 5px;
+  width: 100%;
+  border-bottom: solid 1px #d4d4d4;
+}
+
+.materialTree:last-child{
+  border-bottom: none;
+}
+
+.materialTree>*{
+  display: table-cell;
+  border-right: solid 1px #909090;
+}
+
+.materialTree>*:last-child{
+  border-right: none;
+}
+
+.materialTree>.equip_type{
+  vertical-align: middle;
+}
+
+.materialTree>.treeAncestor{
+  vertical-align: middle;
+}
+
+.materialTree>.treeAncestor>*{
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 2px 5px;
+}
+
+.materialTree>.treeAncestor .treeParent{
+  border: solid 1px #777777;
+  box-shadow: 3px 3px 8px 0px #0000008a;
+  padding: 0 5px;
+  margin: 5px 0;
+  white-space: nowrap;
+  color: #cecece;
+}
+
+.materialTree>.treeAncestor .treeChild{
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.originMaterial{
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.originMaterial>*{
+  display: inline-block;
+}
+
+.treeChild::before {
+  content: "";
+  width: 12px;
+  border-bottom: 1px solid #525252;
+  height: 14px;
+}
