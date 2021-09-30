@@ -19,7 +19,7 @@ commands:
           name: Cache npm dependencies
           key: npm-{{ checksum "package.json" }}
           paths:
-            - ~/workspace/node_modules
+            - ~/workspace/main/node_modules
             
   restore_build:
     steps:
@@ -33,7 +33,7 @@ commands:
           name: Cache dist file
           key: dist
           paths:
-            - ~/workspace/dist
+            - ~/workspace/main/dist
 
 jobs:
 
@@ -46,7 +46,7 @@ jobs:
           name: Install dependencies
           command: npm install
           working_directory: main
-      - run: ls
+      - run: ls main
       - save_npm
 
   lint:
@@ -70,7 +70,7 @@ jobs:
           name: Build
           command: yarn build
           working_directory: main
-      - run: ls
+      - run: ls main
       - save_npm
       - save_build
 
