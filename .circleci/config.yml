@@ -72,7 +72,7 @@ jobs:
           name: Build
           command: yarn build
           working_directory: main
-      - run: ls main
+      - run: cat main/build/index.html
       - save_npm
       - save_build
 
@@ -94,7 +94,7 @@ jobs:
       - checkout
       - restore_npm
       - restore_build
-      - run: ls main
+      - run: cat main/build/index.html
       - run: 
           command: npm install gh-pages -g
           working_directory: main
