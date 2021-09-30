@@ -4,9 +4,7 @@ executors:
   default:
     working_directory: ~/workspace
     docker:
-      - image: node:14
-      - environment:
-        - NODE_ENV=production
+      - image: node:12
       
 commands:
   restore_npm:
