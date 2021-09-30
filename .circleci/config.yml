@@ -100,7 +100,9 @@ jobs:
           working_directory: main
       - run: git config user.name $GITHUB_NAME
       - run: git config user.email $GITHUB_EMAIL
-      - run: gh-pages -d main/build -m 'auto deploy [skip ci]' -t
+      - run: 
+          command: gh-pages -d build -m 'auto deploy [skip ci]' -t
+          working_directory: main
 
 workflows:
   pull-request:
