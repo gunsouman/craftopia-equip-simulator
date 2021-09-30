@@ -96,17 +96,13 @@ jobs:
 workflows:
   pull-request:
     jobs:
-      - setup:
-          filters:
-            branches:
-              only: 
-                - vue3
+      - setup
 #       - lint:
 #           requires:
 #             - setup
       - build:
           requires:
-            - deploy-gh
+            - setup
 #       - test:
 #           requires:
 #             - build
