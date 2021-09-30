@@ -5,10 +5,9 @@ executors:
     working_directory: ~/workspace
     docker:
       - image: node:14.13.1
-      - working_dir: /home/node/app
+      - working_directory: /home/node/app
       - environment:
         - NODE_ENV=production
-      - command: yarn build
       
 commands:
   restore_npm:
