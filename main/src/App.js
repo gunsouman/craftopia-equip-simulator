@@ -814,8 +814,9 @@ export default class App extends React.Component {
             <div>未実装機能</div>
             <ul>
               <li>装備・エンチャントが持つスキル情報</li>
-              <li>納品によるステータス入力（物理クリティカルなど）</li>
-              <li>3つめの項目</li>
+              <li>アイテムを捧げたことによるステータス上昇の入力（物理クリティカルなど）</li>
+              <li>パッチ v20210930.1502　未対応</li>
+              
             </ul>
           </article>
         </section>
