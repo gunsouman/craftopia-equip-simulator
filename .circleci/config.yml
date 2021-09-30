@@ -94,6 +94,7 @@ jobs:
       - checkout
       - restore_npm
       - restore_build
+      - run: ls main
       - run: 
           name: Build
           command: yarn build
