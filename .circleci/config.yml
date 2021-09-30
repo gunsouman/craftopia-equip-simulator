@@ -5,6 +5,8 @@ executors:
     working_directory: ~/workspace
     docker:
       - image: node:12
+      - environment:
+          CI: false
       
 commands:
   restore_npm:
