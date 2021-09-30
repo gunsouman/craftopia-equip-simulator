@@ -42,10 +42,10 @@ jobs:
       name: default
     steps:
       - checkout
-      - working_directory: main
       - run:
           name: Install dependencies
           command: npm install
+          working_directory: main
       - run: ls
       - save_npm
 
@@ -66,10 +66,10 @@ jobs:
     steps:
       - checkout
       - restore_npm
-      - working_directory: main
       - run: 
           name: Build
           command: yarn build
+          working_directory: main
       - run: ls
       - save_npm
       - save_build
@@ -92,7 +92,6 @@ jobs:
       - checkout
       - restore_npm
       - restore_build
-      - working_directory: main
       - run: ls
       - run: npm install gh-pages -g
       - run: git config user.name $GITHUB_NAME
