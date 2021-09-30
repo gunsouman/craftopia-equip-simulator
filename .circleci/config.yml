@@ -94,13 +94,17 @@ jobs:
       - checkout
       - restore_npm
       - restore_build
+      - run: 
+          name: Build
+          command: yarn build
+          working_directory: main
       - run: ls main
       - run: 
           command: npm install gh-pages -g
           working_directory: main
       - run: git config user.name $GITHUB_NAME
       - run: git config user.email $GITHUB_EMAIL
-      - run: command: gh-pages -d ./main/dist -m 'auto deploy [skip ci]' -t
+      - run: gh-pages -d ./main/dist -m 'auto deploy [skip ci]' -t
 
 workflows:
   pull-request:
