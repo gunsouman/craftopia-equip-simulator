@@ -11,13 +11,13 @@ commands:
     steps:
       - restore_cache:
           name: Restore npm dependencies
-          key: npm-{{ checksum "package.json" }}
+          key: npm-{{ checksum "main/package.json" }}
 
   save_npm:
     steps:
       - save_cache:
           name: Cache npm dependencies
-          key: npm-{{ checksum "package.json" }}
+          key: npm-{{ checksum "main/package.json" }}
           paths:
             - ~/workspace/main/node_modules
             
@@ -25,13 +25,13 @@ commands:
     steps:
       - restore_cache:
           name: Restore dist file
-          key: dist
+          key: main/dist
             
   save_build:
     steps:
       - save_cache:
           name: Cache dist file
-          key: dist
+          key: main/dist
           paths:
             - ~/workspace/main/dist
 
