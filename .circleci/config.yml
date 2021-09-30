@@ -26,16 +26,16 @@ commands:
   restore_build:
     steps:
       - restore_cache:
-          name: Restore dist file
-          key: main/dist
+          name: Restore build file
+          key: main/build
             
   save_build:
     steps:
       - save_cache:
-          name: Cache dist file
-          key: main/dist
+          name: Cache build file
+          key: main/build
           paths:
-            - ~/workspace/main/dist
+            - ~/workspace/main/build
 
 jobs:
 
@@ -105,7 +105,7 @@ jobs:
           working_directory: main
       - run: git config user.name $GITHUB_NAME
       - run: git config user.email $GITHUB_EMAIL
-      - run: gh-pages -d ./main/dist -m 'auto deploy [skip ci]' -t
+      - run: gh-pages -d ./main/build -m 'auto deploy [skip ci]' -t
 
 workflows:
   pull-request:
