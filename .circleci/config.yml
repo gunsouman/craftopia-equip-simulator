@@ -42,6 +42,7 @@ jobs:
       name: default
     steps:
       - checkout
+      - run: cd main
       - run:
           name: Install dependencies
           command: npm install
