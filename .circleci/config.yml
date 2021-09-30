@@ -5,7 +5,7 @@ executors:
     working_directory: ~/workspace
     docker:
       - image: node:12
-      - environment:
+      environment:
           CI: false
       
 commands:
