@@ -94,6 +94,10 @@ jobs:
       - checkout
       - restore_npm
       - restore_build
+      - run: 
+          name: Build
+          command: yarn build
+          working_directory: main
       - run: cat main/build/index.html
       - run: 
           command: npm install gh-pages -g
