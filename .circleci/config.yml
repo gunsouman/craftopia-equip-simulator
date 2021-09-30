@@ -64,6 +64,7 @@ jobs:
     steps:
       - checkout
       - restore_npm
+      - run: ls
       - run: 
           name: Build
           command: yarn build
