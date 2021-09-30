@@ -1,0 +1,119 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/workspace
+    docker:
+      - image: node:14.13.1
+      - working_dir: /home/node/app
+      - environment:
+        - NODE_ENV=production
+      - command: yarn build
+      
+commands:
+  restore_npm:
+    steps:
+      - restore_cache:
+          name: Restore npm dependencies
+          key: npm-{{ checksum "package.json" }}
+
+  save_npm:
+    steps:
+      - save_cache:
+          name: Cache npm dependencies
+          key: npm-{{ checksum "package.json" }}
+          paths:
+            - ~/workspace/node_modules
+            
+  restore_build:
+    steps:
+      - restore_cache:
+          name: Restore dist file
+          key: dist
+            
+  save_build:
+    steps:
+      - save_cache:
+          name: Cache dist file
+          key: dist
+          paths:
+            - ~/workspace/dist
+
+jobs:
+
+  setup:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_npm
+
+  lint:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run: 
+          name: Lint
+          command: npm run lint
+      - save_npm
+
+  build:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run: 
+          name: Build
+          command: yarn build
+      - save_npm
+      - save_build
+
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run: 
+          name: Test
+          command: npm run test:unit
+      - save_npm
+      
+  deploy-gh:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - restore_build
+      - run: npm install gh-pages -g
+      - run: git config user.name $GITHUB_NAME
+      - run: git config user.email $GITHUB_EMAIL
+      - run: gh-pages -d ./dist -m 'auto deploy [skip ci]' -t
+
+workflows:
+  pull-request:
+    jobs:
+      - setup:
+          filters:
+            branches:
+              only: 
+                - vue3
+#       - lint:
+#           requires:
+#             - setup
+      - build:
+          requires:
+            - deploy-gh
+#       - test:
+#           requires:
+#             - build
+      - deploy-gh:
+          requires:
+            - build
