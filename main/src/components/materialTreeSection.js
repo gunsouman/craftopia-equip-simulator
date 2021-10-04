@@ -63,13 +63,14 @@ let MaterialTree = forwardRef((props, ref) => {
       if(material!==null){
         for (let material_name of Object.keys(material)){
           let _material = items[material_name]
-          
+
           let total_num = material[material_name]*parent_num
           
           let _material_tree = {num: total_num, materials:{}}
           material_tree[material_name] = _material_tree
           
           if(parent_name===material_name)continue;
+          if(_material==null || _material_tree==null)continue;
           
           check_material(_material["materials"], _material_tree["materials"], material_name, total_num);
         }

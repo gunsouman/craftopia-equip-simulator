@@ -1,0 +1,32 @@
+article.enchantDetail table {
+	width: 100%;
+	font-size: 14px;
+	border-collapse: collapse;
+	margin: 4px auto;
+	width: calc( 100% - 10px);
+}
+article.enchantDetail thead {
+	font-size: 13px;
+}
+article.enchantDetail thead>tr {
+	border-bottom: solid 1px #909090;
+}
+article.enchantDetail thead>tr>th {
+	padding: 1px;
+	border-right: solid 1px #909090;
+}
+article.enchantDetail thead>tr>th:last-child {
+	border-right: none;
+}
+article.enchantDetail tbody>tr {
+	border-bottom: solid 1px #d4d4d4;
+}
+article.enchantDetail tbody>tr:last-child {
+	border-bottom: none;
+}
+article.enchantDetail tbody>tr>td {
+	border-right: solid 1px #909090;
+}
+article.enchantDetail tbody>tr>td:last-child {
+	border-right: none;
+}

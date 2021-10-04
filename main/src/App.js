@@ -4,6 +4,7 @@ import React, {createRef} from 'react';
 
 import EquipSelector from "./components/equipSelector";
 import MaterialTreeSection from "./components/materialTreeSection";
+import EnchantDetailSection from "./components/enchantDetailSection";
 
 import Config from './configs/configs.json';
 import Info from './configs/info.json';
@@ -14,7 +15,7 @@ const UNIQUE_LABELS = Config.UNIQUE_LABELS;
 const EQUIP_STATUS_KEY_LABELS = Config.EQUIP_STATUS_KEY_LABELS;
 const STATUS_RANGES = Config.STATUS_RANGES;
 const ENCHANTMENT_COLUMNS = Config.ENCHANTMENT_COLUMNS
-const RARELITY_INFOS = Config.RARELITY_INFOS
+const EQUIP_PARTS = Config.EQUIP_PARTS
 
 const head_equips = require('./assets/equip_infos/頭装備.json');
 const body_equips = require('./assets/equip_infos/体装備.json');
@@ -27,54 +28,62 @@ const two_h_sword_equips = require('./assets/equip_infos/両手剣.json');
 const spear_equips = require('./assets/equip_infos/槍.json');
 const bow_equips = require('./assets/equip_infos/弓.json');
 const gun_equips = require('./assets/equip_infos/銃.json');
+const rod_equips = require('./assets/equip_infos/魔法杖.json');
 const tool_equips = require('./assets/equip_infos/ツール.json');
 
 let enchantment_list = require('./assets/enchantment_infos/enchantment.json');
 
-  let ENCHANT_CONVERTER = {
-    エンチャント名: "name",
-    ATK: "atk",
-    ATK割合: "atk_per",
-    MATK: "matk",
-    MATK割合: "matk_per",
-    "DEFのN%ATK増加": "def_for_atk",
-    "DEFのN%MATK増加": "def_for_matk",
-    DEF: "def",
-    DEF割合: "def_per",
-    最大スタ: "stamina",
-    最大スタ割合: "stamina_per",
-    最大マナ: "mana",
-    最大マナ割合: "mana_per",
-    最大ライフ: "life",
-    最大ライフ割合: "life_per",
-    最大満腹度: "hunger",
-    最大満腹度割合: "hunger_per",
+let ENCHANT_CONVERTER = {
+  エンチャント名: "name",
+  ATK: "atk",
+  ATK割合: "atk_per",
+  MATK: "matk",
+  MATK割合: "matk_per",
+  "DEFのN%ATK増加": "def_for_atk",
+  "DEFのN%MATK増加": "def_for_matk",
+  DEF: "def",
+  DEF割合: "def_per",
+  最大スタ: "stamina",
+  最大スタ割合: "stamina_per",
+  最大マナ: "mana",
+  最大マナ割合: "mana_per",
+  最大ライフ: "life",
+  最大ライフ割合: "life_per",
+  最大満腹度: "hunger",
+  最大満腹度割合: "hunger_per",
 
-    移動速度: "mv",
-    空中速度: "amv",
+  移動速度: "mv",
+  空中速度: "amv",
 
-    ASPD: "aspd",
-    アイテムCD: "item_cd",
-    スキルCD: "skill_cd",
-    物理クリダメ: "crit_dmg",
-    物理クリ確率: "crit_per",
-    魔法クリダメ: "mcrit_dmg",
-    魔法クリ確率: "mcrit_per",
-    マナ自然回復量: "mana_recovery_per",
-    スタミナ自然回復量: "stamina_recovery_per",
-    満腹度消費量:"hunger_utility_per",
+  ASPD: "aspd",
+  アイテムCD: "item_cd",
+  スキルCD: "skill_cd",
+  物理クリダメ: "crit_dmg",
+  物理クリ確率: "crit_per",
+  魔法クリダメ: "mcrit_dmg",
+  魔法クリ確率: "mcrit_per",
+  マナ自然回復量: "mana_recovery_per",
+  スタミナ自然回復量: "stamina_recovery_per",
+  満腹度消費量:"hunger_utility_per",
+}
+
+for(let enchantment of enchantment_list){
+  for(let old_key of Object.keys(enchantment)){
+    let new_key = ENCHANT_CONVERTER[old_key]
+    if(new_key==null)continue
+    delete Object.assign( enchantment, {[new_key]: enchantment[old_key] })[old_key];
   }
-
-  for(let enchantment of enchantment_list){
-    for(let old_key of Object.keys(enchantment)){
-      let new_key = ENCHANT_CONVERTER[old_key]
-      if(new_key==null)continue
-      delete Object.assign( enchantment, {[new_key]: enchantment[old_key] })[old_key];
+}
+for(let enchantment of enchantment_list){
+  for(let enchant_column of ENCHANTMENT_COLUMNS){
+    if(enchantment[enchant_column["accessor"]]==null){
+      enchantment[enchant_column["accessor"]] = 0
     }
   }
+}
 
 const where_to_equip ={
-  "right_hand":["one_h_sword_equips", "two_h_sword_equips", "spear_equips", "bow_equips", "gun_equips", "tool_equips"],
+  "right_hand":["one_h_sword_equips", "two_h_sword_equips", "spear_equips", "bow_equips", "gun_equips", "tool_equips", "rod_equips"],
   "head":["head_equips"], 
   "body":["body_equips"], 
   "left_hand":["shield_equips", "one_h_sword_equips"], 
@@ -85,14 +94,14 @@ const where_to_equip ={
 }
 
 let equip_parts = [
-  { code: "right_hand", title: "武器", style:{top:"20px", left:"20px"}, options:[], target:null, equip_list:[], enchantments:[null, null, null, null] },
-  { code: "head", title: "頭装備", style:{top:"80px", left:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "body", title: "体", style:{top:"140px", left:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "left_hand", title: "左手", style:{top:"200px", left:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "accessory1", title: "アクセサリー1", style:{top:"20px", right:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "accessory2", title: "アクセサリー2", style:{top:"80px", right:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "glider", title: "グライダー", style:{top:"140px", right:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
-  { code: "other", title: "戦闘補助", style:{top:"200px", right:"20px" }, options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "right_hand", title: EQUIP_PARTS["right_hand"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null] },
+  { code: "head", title: EQUIP_PARTS["head"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "body", title: EQUIP_PARTS["body"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "left_hand", title: EQUIP_PARTS["left_hand"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "accessory1", title: EQUIP_PARTS["accessory1"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "accessory2", title: EQUIP_PARTS["accessory2"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "glider", title: EQUIP_PARTS["glider"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
+  { code: "other", title: EQUIP_PARTS["other"], options:[], target:null, equip_list:[], enchantments:[null, null, null, null]},
 ];
 
 // 装備一覧インポート
@@ -105,11 +114,13 @@ for(let equip_part of equip_parts){
     for(let json_data of json_datas){
       
       let target_equip = {}
+      target_equip["skill"] = {}
       target_equip["type"] = EQUIP_LABELS[target_json_name]
       for(let EQUIP_STATUS_KEY of Object.keys(EQUIP_STATUS_KEY_LABELS)){
         let EQUIP_STATUS_LABEL= EQUIP_STATUS_KEY_LABELS[EQUIP_STATUS_KEY]
         target_equip[EQUIP_STATUS_KEY] = (json_data[EQUIP_STATUS_LABEL]!=null)?json_data[EQUIP_STATUS_LABEL]:0
       }
+      target_equip["skill"] = json_data["skill"]
       equip_list.push(target_equip)
       
     }
@@ -137,7 +148,9 @@ let status = {
   mana_recovery_per:0,
   stamina_recovery_per:0,
   hunger_utility_per:0,
+  skills:{},
 }
+
 let basic_status = {}
 Object.keys(INPUT_STATUS_LABELS).map((key, i) => {
   basic_status[key] = 0;
@@ -212,6 +225,7 @@ export default class App extends React.Component {
     super(props);
 
     this.equipPartRefs = equip_parts.map((_, i) => createRef());
+    this.enchantDetailRefs = createRef()
     this.materialTreeRefs = createRef()
 
     this.state = { 
@@ -221,9 +235,13 @@ export default class App extends React.Component {
       targetSave: 0, 
       titleNames:["", "", ""],
       targetTable:null,
+      enchant_table: null,
       enchantInfoBalloon: null,
+      HoverSaveData: null,
 
-      material_enchants: Array(equip_parts.length)
+      material_enchants: Array(equip_parts.length),
+      
+      confirm_save: null
     };
 
     this.updateStatus = this.updateStatus.bind(this);
@@ -244,6 +262,7 @@ export default class App extends React.Component {
     // console.log("App updateStatus", equip_parts)
     
     let res = {}
+    let skills = {}
     for(let key of Object.keys(this.state.result_status)){
       res[key] = 0;
     }
@@ -293,6 +312,14 @@ export default class App extends React.Component {
             }
           }
         }
+        // console.log("equip_part", equip_part)
+        for(let skill_name of Object.keys(equip_part.target["skill"])){
+          if(skills[skill_name]==null){
+            skills[skill_name] = 0
+          }
+          skills[skill_name] += equip_part.target["skill"][skill_name]
+        }
+
       }
       for(let enchantment of equip_part.enchantments){
         if(enchantment == null)continue
@@ -321,6 +348,14 @@ export default class App extends React.Component {
             }
           }
         }
+        
+        for(let skill_name of Object.keys(enchantment["skill"])){
+          if(skills[skill_name]==null){
+            skills[skill_name] = 0
+          }
+          skills[skill_name] += enchantment["skill"][skill_name]
+        }
+        
       }
     }
     
@@ -355,6 +390,8 @@ export default class App extends React.Component {
       res[key] = Math.round(res[key]);
     }
 
+    res["skills"] = skills
+
     // console.log("updateStatus", this.state.basic_status, addition_status ,multiply_per_status, unique_status, res)
     this.setState({result_status:res})
   }
@@ -378,8 +415,12 @@ export default class App extends React.Component {
 
 
   onClickHandler(e){
-    // console.log("App onClickHandler", e, equip_parts)
-    if (!e.target.closest(".inputEquip")&&!e.target.closest(".inputEnchant")) {
+    // console.log("App onClickHandler", e, equip_parts,
+    // e.target.closest(".inputEquip"),
+    // e.target.closest(".inputEnchant"),
+    // e.target.closest(".enchantTableSection"),
+    // )
+    if (!(e.target.closest(".inputEquip")||e.target.closest(".inputEnchant")||e.target.closest(".enchantTableSection"))) {
       for(let equip_part_ref of this.equipPartRefs){
         if(equip_part_ref.current)
           equip_part_ref.current.closeAllModal()
@@ -406,7 +447,7 @@ export default class App extends React.Component {
     
     const strage_index = "save_"+index;
     const savedata_str = localStorage.getItem(strage_index);
-
+    console.log(strage_index, savedata_str)
     if (savedata_str ==null){
       this.clearAll();
       return;
@@ -434,6 +475,7 @@ export default class App extends React.Component {
               let EQUIP_STATUS_LABEL= EQUIP_STATUS_KEY_LABELS[EQUIP_STATUS_KEY]
               target_equip[EQUIP_STATUS_KEY] = (json_data[EQUIP_STATUS_LABEL]!=null)?json_data[EQUIP_STATUS_LABEL]:0
             }
+            target_equip["skill"] = json_data["skill"]
 
             break;
           }
@@ -497,6 +539,10 @@ export default class App extends React.Component {
 
     localStorage.setItem(strage_index, savedata_str);
   }
+
+  setConfirm(target){
+    this.setState({confirm_save:target});
+  }
   
   clearAll(e){
     // console.log("clearAll", e)
@@ -542,57 +588,115 @@ export default class App extends React.Component {
     return (value);
   }
 
-  render() {
-    window.addEventListener('scroll', (e) => {
-      let enchant_table_doms = document.getElementsByClassName("enchantTableSection")
-      
-      if (enchant_table_doms.length>0){
-        enchant_table_doms[0].style.marginTop = -1*window.scrollY+"px"
-      }
-    });
+  mouseoverFile(index, e){
+    const strage_index = "save_"+index;
+    const savedata_str = localStorage.getItem(strage_index);
+    const savedata = JSON.parse(savedata_str)
 
+    let res = []
+    if(savedata==null || savedata["equips"]==null || Object.keys(savedata["equips"]).length===0){
+      res = "(装備なし)"
+
+    }else{
+      for(let equip_part_key of Object.keys(EQUIP_PARTS)){
+        let equip_part = savedata["equips"][equip_part_key]
+        if(equip_part==null)continue
+        res.push(<div key={EQUIP_PARTS[equip_part_key]}>{EQUIP_PARTS[equip_part_key] +":"+ equip_part.name}</div>)
+        for(let enchantment_index in equip_part.enchantments){
+          let enchantment_name = equip_part.enchantments[enchantment_index]
+          res.push(<div key={EQUIP_PARTS[equip_part_key]+"_ENCHANT_"+enchantment_index} style={{"paddingLeft": "20px"}}>{enchantment_name}</div>)
+        }
+      }
+    }
+
+    console.log("DDDD", res)
+
+    this.setState({HoverSaveData:<div>{res}</div>});
+
+  }
+
+  mousemoveFile(e){
+    let saveDom = document.querySelector('.saveBalloon');
+    saveDom.style.left = e.pageX+10 + "px";
+    saveDom.style.top = e.pageY+10 + "px";
+  }
+
+  mouseoutFile(e){
+    this.setState({HoverSaveData:null});
+  }
+
+  render() {
     return (
       <div className="App" 
         onClick={this.onClickHandler} 
       >
+        {(this.state.enchant_table!=null)&&this.state.enchant_table}
+        
         <div className="enchantInfoBalloon"
-          style={(this.state.enchantInfoBalloon!=null) ? {top:this.state.enchantInfoBalloon.top, left:this.state.enchantInfoBalloon.left} : {display:"none"}}
+          style={(this.state.enchantInfoBalloon!=null) ? {display:"block"}: {display:"none"}}
         >{
-          ((this.state.enchantInfoBalloon!=null)&&Object.keys(this.state.enchantInfoBalloon.data).length>0)?
-          ENCHANTMENT_COLUMNS.map(column => {
-            let key = column["accessor"]
-            if(Object.keys(this.state.enchantInfoBalloon.data).indexOf(key)!==-1 
-              && this.state.enchantInfoBalloon.data[key]!==0
-              && key!=="name"
-            ){
-              let value = this.state.enchantInfoBalloon.data[key]
-              return <div><span>{column["Header"]}</span>: {value}</div>
+          (function (self) {
+            if (self.state.enchantInfoBalloon != null){
+
+              let datas = ENCHANTMENT_COLUMNS.map(column => {
+                let key = column["accessor"]
+                if(Object.keys(self.state.enchantInfoBalloon).indexOf(key)!==-1 
+                  && self.state.enchantInfoBalloon[key]!==0
+                  && key!=="name"
+                ){
+                  let value = self.state.enchantInfoBalloon[key]
+                  return <div key={"ENCHANT_BALLOON"+column["Header"]}><span>{column["Header"]}</span>: {value}</div>
+                }
+              })
+              
+              if(self.state.enchantInfoBalloon["skill"]!=null){
+                let skills = Object.keys(self.state.enchantInfoBalloon["skill"]).map((skill_name)=>{
+                  return <div key={"skill_"+skill_name+"_balloon"}>スキル：{skill_name} Lv{self.state.enchantInfoBalloon["skill"][skill_name]}</div>
+                })
+                datas = datas.concat(skills)
+              }
+
+              datas = datas.filter((n) => { return n != null });
+
+              if(datas.length===0){
+                datas.push(<div>(なし)</div>)
+              }
+              return datas
             }
-          }):<div>(なし)</div>
+          }(this))
         }</div>
+
+        {(this.state.HoverSaveData!=null)&&(<div className="saveBalloon">{(this.state.HoverSaveData)}</div>)}
+        
         <header>Craftpia 装備シミュレーター</header>
         <section className="saveSection">
           <div>
-            <div>
-              <div className="fileFrame">
-                <input type="button" className="fileButton" value="file0" onClick={(e)=>this.importSavedata(0)} />
-                <input type="button" className="saveButton" value="save0" onClick={(e)=>this.exportSavedata(e, 0)} />
-              </div>
-            </div>
-            <div>
-              <div className="fileFrame">
-                <input type="button" className="fileButton" value="file1" onClick={(e)=>this.importSavedata(1)} />
-                <input type="button" className="saveButton" value="save1" onClick={(e)=>this.exportSavedata(e, 1)} />
-              </div>
-            </div>
-            <div>
-              <div className="fileFrame">
-                <input type="button" className="fileButton" value="file2" onClick={(e)=>this.importSavedata(2)} />
-                <input type="button" className="saveButton" value="save2" onClick={(e)=>this.exportSavedata(e, 2)} />
-              </div>
-            </div>
+            {[...Array(5)].map((key, i) => { 
+              return(
+                <div key={"FILE_"+i} 
+                  onMouseOver={(e)=>{this.mouseoverFile(i, e)}}
+                  onMouseOut={(e)=>{this.mouseoutFile(e)}}
+                  onMouseMove={(e)=>{this.mousemoveFile(e)}}
+                >
+                  <div className="fileFrame">
+                    <input type="button" className="fileButton" value={"load"+i} onClick={(e)=>{this.importSavedata(i);this.setConfirm(null)}} />
+                    <input type="button" className="saveButton" value={"save"+i} onClick={(e)=>this.setConfirm(i)} />
+                  </div>
+
+                </div>
+              )
+            })}
           </div>
-          <input type="button" className="clearButton" value="clear" onClick={(e)=>this.clearAll(e)} />
+
+            {
+              (this.state.confirm_save!=null)&&
+              (<div className="confirm">
+                <span>現在の入力情報を <span style={{fontWeight: "bold",color: "#000"}}>save{this.state.confirm_save}</span> に上書きます。</span>
+                <input type="button" className="saveButton" value="はい" onClick={(e)=>{this.exportSavedata(e, this.state.confirm_save);this.setConfirm(null)}} />
+                <input type="button" className="saveButton" value="いいえ" onClick={(e)=>this.setConfirm(null)} />
+              </div>)
+
+            }
         </section>
         
         <div className="scrollButton">
@@ -600,11 +704,13 @@ export default class App extends React.Component {
             <div onClick={(e)=>{this.scroll(e, "saveSection")}}>入力画面</div>
             <div onClick={(e)=>{this.scroll(e, "enchantDetail")}}>エンチャント詳細</div>
             <div onClick={(e)=>{this.scroll(e, "materialSection")}}>素材ツリー</div>
-            
           </div>
         </div>
 
-        
+        <div>
+          <input type="button" className="clearButton" value="clear" onClick={(e)=>this.clearAll(e)} />
+        </div>
+
         <section className="main">
           <div>
             <section className="status">
@@ -653,7 +759,7 @@ export default class App extends React.Component {
                     {Object.keys(STATUS_LABELS).map((key, i) => { 
                       if(addition_status[key]!=null){
                         return(
-                          <tr key={key+"_RES_STATUS"}>
+                          <tr key={"RES_STATUS_"+key}>
                             <td>{STATUS_LABELS[key]}</td>
                             <td>
                               {(addition_status[key]<0)?0:addition_status[key]}
@@ -675,7 +781,7 @@ export default class App extends React.Component {
                         )
                       }else if(per_status[key]!=null){
                         return(
-                          <tr key={key+"_RES_STATUS"}>
+                          <tr key={"RES_STATUS_"+key}>
                             <td>{STATUS_LABELS[key]}</td>
                             <td></td>
                             <td>{(per_status[key]>0)?"+":""}{per_status[key]}%</td>
@@ -706,6 +812,16 @@ export default class App extends React.Component {
                         )
                       }
                     })}
+                    
+                    <tr>
+                      <td>スキル</td>
+                      <td colSpan="4">{
+                        
+                          Object.keys(this.state.result_status["skills"]).map((key, i) => {
+                            return (<div key={"TOTAL_"+key}>{key}: Lv.{this.state.result_status["skills"][key]}</div>)
+                          }) 
+                        }</td>
+                    </tr>
                   </tbody>
                 </table>
               </article>
@@ -753,50 +869,9 @@ export default class App extends React.Component {
             </section>
           </div>
         </section>
-
-        <article className="enchantDetail">
-          <div>
-            <div className="title">エンチャント詳細</div>
-            <table>
-              <thead>
-                <tr role="row">
-                  <th>装備箇所</th>
-                  <th>名称</th>
-                  <th>エンチャント</th>
-                </tr>
-              </thead>
-              <tbody>
-                {equip_parts.map((equip_part, i) => { 
-                  return(
-                    <tr key={i+"enchantDetail"}>
-                      <td>{equip_part.title}</td>
-                      <td>{equip_part.target && equip_part.target.name}</td>
-                      <td>
-                        {equip_part.enchantments &&
-                          Object.keys(equip_part.enchantments).map((i) => {
-                            let enchantment = equip_part.enchantments[i]
-                            if(enchantment!=null){
-                              return (<div key={i+"enchantDetail_get"}>
-                                <span 
-                                  style={{color:RARELITY_INFOS[enchantment["rarelity"]].color}}
-                                >{enchantment.name}</span>
-                                
-                              ({enchantment["備考"]}
-                              {(enchantment["備考"]!=="")&&(enchantment["ト"]==="○")&&"、 "}
-                              {(enchantment["ト"]==="○")&&"トレジャー"}
-                              )</div>)
-                            }
-                          })
-                        }
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        </article>
         
+        <EnchantDetailSection ref={this.enchantDetailRefs} equip_parts={equip_parts} parent={this} />
+
         <MaterialTreeSection ref={this.materialTreeRefs} equip_parts={equip_parts} parent={this} />
         
         <section className="history">
@@ -813,10 +888,8 @@ export default class App extends React.Component {
           <article>
             <div>未実装機能</div>
             <ul>
-              <li>装備・エンチャントが持つスキル情報</li>
-              <li>アイテムを捧げたことによるステータス上昇の入力（物理クリティカルなど）</li>
-              <li>パッチ v20210930.1502　未対応</li>
-              
+              <li>パッチ v20210930.1502　対応中</li>
+              <li>アイテムを捧げた影響を設定する機能（物理クリティカルなど）</li>
             </ul>
           </article>
         </section>

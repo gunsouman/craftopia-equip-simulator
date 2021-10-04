@@ -1,18 +1,11 @@
 
 section.enchantTableSection{
-  position: fixed;
+  position: absolute;
   z-index: 10;
-  overflow-y: scroll;
-  height: 500px;
-  /* max-width: 1100px; */
   left: 40px;
   right: 40px;
   font-size: 14px;
   animation: 0.2s openTable;
-}
-section.enchantTableSection table{
-  white-space: nowrap;
-  border-collapse: collapse;
 }
 
 section.enchantTableSection thead {

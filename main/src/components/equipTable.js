@@ -77,7 +77,8 @@ export default forwardRef((props, ref) => {
           material_tree[material_name] = _material_tree
           
           if(parent_name===material_name)continue;
-          
+          if(_material==null || _material_tree==null)continue;
+
           check_material(_material["materials"], _material_tree["materials"], material_name, total_num);
         }
       }
@@ -104,16 +105,16 @@ export default forwardRef((props, ref) => {
           Object.keys(material_tree).map((key, i)=>{
             // console.log("\t", material_tree)
             return (
-              <div className="overOriginMaterial">
+              <div key={"OVER_ORIGIN_MATERIAL_"+key} className="overOriginMaterial">
                 <div className="headTable">原材料合計</div>
                 <div>
                   {
 
-                    (Object.keys(origin_material).length===1&&Object.keys(origin_material)[0]==key)?
-                    (<div>なし</div>):
-                    Object.keys(origin_material).map((key, i)=>{
-                      return(<div>{key}×{origin_material[key]}</div>)
-                    })
+                    (Object.keys(origin_material).length===1&&Object.keys(origin_material)[0]===key)?
+                      (<div>なし</div>):
+                      Object.keys(origin_material).map((material, i)=>{
+                        return(<div key={"OVER_ORIGIN_MATERIAL_"+key+"_"+material}>{material}×{origin_material[material]}</div>)
+                      })
                   
                   }
                 </div>
@@ -141,18 +142,16 @@ export default forwardRef((props, ref) => {
     <section className="equipTableSection">
       {overEquip}
       <div className="tableMaster modalTable" onScroll={trackScrolling}>
-        <table 
-          className="equipTable"
-          style={{whiteSpace: "nowrap", borderCollapse: "collapse"}}
-        >
+        <table className="equipTable">
           <thead>
             <tr>
               {EQUIP_COLUMNS.map(column => (
-                <th onClick={()=>{changeSorting(column['accessor'])}}>
+                <th key={"EQUIP_TABLE_HEADER_"+column['accessor']} onClick={()=>{changeSorting(column['accessor'])}}>
                   {column['Header']}
                   <span>{sortStatus["column"]===column['accessor'] ? (sortStatus["type"]==="asc" ? ' ▼' : ' ▲') : ' 　'}</span>
                 </th>
               ))}
+              <th>スキル</th>
             </tr>
           </thead>
           <tbody>
@@ -161,16 +160,27 @@ export default forwardRef((props, ref) => {
 
               let row = (
                 <tr
+                    key={"EQUIP_TABLE_ROW_"+i}
                     style={style}
                     onClick={(e) => selectEquip(e, equip)}
                     onMouseOver ={(e) => hoverEquip(e, equip)}
                     onMouseOut ={(e) => outEquip(e)}
                 >
                   {EQUIP_COLUMNS.map((column, j) => (
-                    <td>
+                    <td
+                      key={"EQUIP_TABLE_TD_"+column["accessor"]}
+                      className={((column["accessor"]==="name")?"equip_rarelity_"+equip["rarelity"]:"") + " " + column["type"]}
+                    >
                       {equip[column.accessor]}
                     </td>
                   ))}
+                  <td>
+                    {Object.keys(equip["skill"]).map((column, j) => (
+                      <div key={"EQUIP_TABLE_TD_SKILL_"+column["accessor"]+"_"+column}>
+                        {column} Lv{equip["skill"][column]}
+                      </div>
+                    ))}
+                  </td>
                   {/* <MaterialTree key={i} equip={equip} parent={this} /> */}
                 </tr>
               )

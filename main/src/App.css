@@ -161,15 +161,15 @@ article .title {
 	color: red;
 	font-weight: bold;
 }
-/* .body{
-  display: block;
-  margin: auto;
-  width: 300px;
-} */
 
-/* .equipment_frame{
-  position: absolute;
-} */
+input[type="text"]:focus, 
+input[type="search"]:focus, 
+input[type="number"]:focus, 
+.focus{
+	box-shadow: 0px 0px 20px 0px rgb(255 230 0 / 55%);
+	background: #ff9900d9;
+	color: #ffffff;
+}
 
 .select_find {
 	width: 200px;
@@ -181,9 +181,6 @@ article .title {
 	display: "table-cell";
 	background: "red";
 	text-align: 'left',
-}
-.fileFrame.targetSavedata {
-	/* border: 5px solid rgb(80 247 255 / 60%); */
 }
 .fileFrame {
 	display: flex;
@@ -213,7 +210,6 @@ article .title {
 .saveSection .fileButton {
 	margin-right: 10px;
 }
-.saveSection .saveButton {}
 .saveSection .fileButton:hover, .saveSection .saveButton:hover {
 	background: rgb(255 249 181);
 	color: orange;
@@ -245,14 +241,54 @@ article .title {
 		border: 1px solid orange;
 	}
 }
-.saveSection .clearButton {
-	position: absolute;
-	top: calc( 50% - 11px);
-	right: 10px;
-	margin-right: 10px;
-	width: 70px;
+
+.confirm{
+	padding-top:5px;
+	transform-origin:center top;
+	animation:show .5s both;
 }
-.saveSection .clearButton:hover {
+@keyframes show {
+	0% {
+		transform:translate(0,-2em);
+		padding-top: 0px;
+		height: 0%;
+		opacity:0;
+	}
+	100% {
+		transform:translate(0,0);
+		padding-top: 8px;
+		opacity:1;
+		height: 100%;
+	}
+}
+.confirm input{
+	margin: 0 5px;
+}
+
+.saveBalloon{
+	position: absolute;
+    padding: 2px;
+    background-color: rgb(103 75 211 / 94%);
+    color: #ffffffcc;
+    font-size: 12px;
+    white-space: nowrap;
+    padding: 5px;
+    z-index: 200;
+    text-align: left;
+    animation: 0.2s openTable;
+}
+
+
+.clearButton {
+	position: absolute;
+    right: 10px;
+    width: 70px;
+    margin-top: 5px;
+	cursor: pointer;
+	z-index: 200;
+}
+
+.clearButton:hover {
 	background: rgb(230 240 255);
 	color: rgb(103, 151, 255);
 	border: 1px solid rgb(103, 151, 255);
@@ -260,7 +296,7 @@ article .title {
 }
 @keyframes hoverSwitch2 {
 	from {
-		background: #fff;
+		background: none;
 		color: #505050;
 		border: 1px solid #bdbdbd;
 	}
@@ -290,39 +326,25 @@ article.enchantDetail {
 	margin: 10px auto 20px auto;
 	width: 90%;
 }
-article.enchantDetail>div {
+.tableMaster{
+	overflow-y: scroll;
+	height: 400px;
+	padding: 0 5px 5px 5px;
+	white-space: nowrap;
+    border-collapse: collapse;
+	color: #dadada;
+	text-align:left;
 }
-article.enchantDetail table {
-	width: 100%;
-	font-size: 14px;
+
+.tableMaster table{
+	white-space: nowrap;
 	border-collapse: collapse;
-	margin: 4px auto;
-	width: calc( 100% - 10px);
 }
-article.enchantDetail thead {
-	font-size: 13px;
-}
-article.enchantDetail thead>tr {
-	border-bottom: solid 1px #909090;
-}
-article.enchantDetail thead>tr>th {
-	padding: 1px;
-	border-right: solid 1px #909090;
-}
-article.enchantDetail thead>tr>th:last-child {
-	border-right: none;
-}
-article.enchantDetail tbody>tr {
-	border-bottom: solid 1px #d4d4d4;
-}
-article.enchantDetail tbody>tr:last-child {
-	border-bottom: none;
-}
-article.enchantDetail tbody>tr>td {
-	border-right: solid 1px #909090;
-}
-article.enchantDetail tbody>tr>td:last-child {
-	border-right: none;
+
+.tableMaster tbody tr {
+	transition: background .5s;
+    cursor: pointer;
+    border-top: solid 1px #4e4e4e;
 }
 @keyframes openTable {
 	from {
@@ -331,6 +353,10 @@ article.enchantDetail tbody>tr>td:last-child {
 	to {
 		opacity: 1
 	}
+}
+
+.tableMaster tbody td.number {
+	text-align:right;
 }
 
 .enchantInfoBalloon{
@@ -350,7 +376,7 @@ article.enchantDetail tbody>tr>td:last-child {
 .equipTableSection .overOriginMaterial{
 	display:none;
 	border: none;
-	background-color: rgb(152 126 255 / 80%);
+	background-color: rgb(76 74 72 / 80%);
 	color: #ffffffcc;
 	box-shadow: 2px 2px 4px 0px #0000002e;
 	z-index: 100;
@@ -520,4 +546,37 @@ input {
 *::-webkit-scrollbar-thumb{
 	background: #444;
 	border-radius: 10px;
+}
+
+
+.equip_rarelity_0{
+	color:#ffffff
+}
+.equip_rarelity_1{
+	color:#009e25
+}
+.equip_rarelity_2{
+	color:#0075c8
+}
+.equip_rarelity_3{
+	color:#dd34ff
+}
+.equip_rarelity_4{
+	color:#ffee1d
+}
+
+.enchant_rarelity_0{
+	color:#a5e9ff
+}
+.enchant_rarelity_1{
+	color:#009e25
+}
+.enchant_rarelity_2{
+	color:#0075c8
+}
+.enchant_rarelity_3{
+	color:#dd34ff
+}
+.enchant_rarelity_4{
+	color:#ffee1d
 }

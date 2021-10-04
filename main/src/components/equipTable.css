@@ -11,15 +11,3 @@ section.equipTableSection thead {
   position: sticky;
   top: 0;
 }
-
-section.equipTableSection tbody tr {
-  transition: background .5s;
-  cursor:pointer;
-}
-
-
-.tableMaster{
-  overflow-y: scroll;
-  height: 400px;
-  
-}

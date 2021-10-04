@@ -10,7 +10,6 @@ import Config from '../configs/configs.json'; // 追加
 const items = require('../assets/item_infos/item.json');
 const EQUIP_COLUMNS = Config.EQUIP_COLUMNS
 const ENCHANTMENT_COLUMNS = Config.ENCHANTMENT_COLUMNS
-const RARELITY_INFOS = Config.RARELITY_INFOS
 
 export default class EquipSelector extends React.Component {
   constructor(props) {
@@ -20,7 +19,6 @@ export default class EquipSelector extends React.Component {
       isEquipOpen: false, 
       isEnchantOpens: [false, false, false, false], 
       targetEquip: null, 
-      targetEnchants: [null, null, null, null], 
       searchEquipText: "", 
       searchEnchantTexts: ["", "", "", ""]
     };
@@ -32,18 +30,15 @@ export default class EquipSelector extends React.Component {
   	
   	this.equips_list = props["equip_list"];
   	this.equip_part = props["equip_part"];
-
+    
   	this.enchantment_list = props["enchantment_list"];
 
     this.openEquipModal = this.openEquipModal.bind(this);
     this.closeEquipModal = this.closeEquipModal.bind(this);
     this.handleEquipChange = this.handleEquipChange.bind(this);
-    this.onBlurHandler = this.onBlurHandler.bind(this);
-    this.onFocusHandler = this.onFocusHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
     this.selectEquip = this.selectEquip.bind(this);
     this.selectEnchant = this.selectEnchant.bind(this);
-
 
     this.equipTableRef = createRef();
     this.enchantTableRef = this.equip_part.enchantments.map((_, i) => createRef());
@@ -57,7 +52,7 @@ export default class EquipSelector extends React.Component {
   selectEquip(row) {
     // console.log("EquipSelector selectEquip", row, this.parent, this.state)
     this.setState({targetEquip: row});
-
+    
     this.equip_part.target = row
     this.parent.updateStatus()
   }
@@ -80,6 +75,13 @@ export default class EquipSelector extends React.Component {
         }
         return 0;
       })
+
+      if( row["skill"]!=null){
+        this.enchantStatus[index]["skill"] = {}
+        for(let skill_name of Object.keys(row["skill"])){
+          this.enchantStatus[index]["skill"][skill_name] = row["skill"][skill_name]
+        }
+      }
     }
 
     this.parent.updateStatus();
@@ -92,14 +94,9 @@ export default class EquipSelector extends React.Component {
       equipPartRef.current.closeAllModal()
     }
 
-    let _enchantTable = [];
-    this.state.isEnchantOpens.map(()=>{
-      _enchantTable.push(false);
-    });
-
     this.setState(currentState => ({
       isEquipOpen: true,
-      isEnchantOpens: _enchantTable
+      isEnchantOpens: [false]*this.state.isEnchantOpens.length
       // isEquipOpen: !currentState.isEquipOpen
     }));
     // console.log(this.state.isEquipOpen)
@@ -107,7 +104,6 @@ export default class EquipSelector extends React.Component {
 
   openEnchantModal(index, e) {
     // console.log("openEnchantModal", this)
-
     for(let equipPartRef of this.parent.equipPartRefs){
       equipPartRef.current.closeAllModal()
     }
@@ -127,6 +123,8 @@ export default class EquipSelector extends React.Component {
       isEnchantOpens: _enchantTable
       // isEquipOpen: !currentState.isEquipOpen
     }));
+
+    this.setEnchantTable(index, e)
   }
 
   closeEquipModal() {
@@ -137,16 +135,26 @@ export default class EquipSelector extends React.Component {
   }
 
   closeEnchantModal() {
+    // this.setState(currentState => ({
+    //   isEnchantOpens:[false, false, false, false]
+    // }));
+
     this.setState(currentState => ({
-      isEnchantOpens:[false, false, false, false]
+      isEnchantOpens: [false]*this.state.isEnchantOpens.length
+    }));
+    this.parent.setState(currentState => ({
+      enchant_table: null
     }));
   }
 
   closeAllModal() {
     this.setState(currentState => ({
       isEquipOpen: false,
-      isEnchantOpens:[false, false, false, false]
-      // isEquipOpen: !currentState.isEquipOpen
+      isEnchantOpens: [false]*this.state.isEnchantOpens.length
+    }));
+
+    this.parent.setState(currentState => ({
+      enchant_table: null
     }));
   }
 
@@ -185,19 +193,8 @@ export default class EquipSelector extends React.Component {
     }
   }
 
-  onBlurHandler(e) {
-    // console.log("onBlurHandler", this, e, e.currentTarget)
-    this.timeOutId = setTimeout(() => {
-    });
-  }
-
   onClickHandler(e) {
     // console.log("onClickHandler", this, e, e.currentTarget)
-  }
-
-  // If a child receives focus, do not close the popover.
-  onFocusHandler() {
-    clearTimeout(this.timeOutId);
   }
 
   setEquipTable(){
@@ -211,7 +208,7 @@ export default class EquipSelector extends React.Component {
     return this.equipTableDom
   }
 
-  setEnchantTable(index){
+  setEnchantTable(index, e){
     let filtered_enchantment_list = [];
 
     for(let enchant of this.enchantment_list){
@@ -219,6 +216,17 @@ export default class EquipSelector extends React.Component {
         filtered_enchantment_list.push(enchant);
       }
     }
+
+    let top = 0;
+    let element = e.nativeEvent.target
+    do {
+        top += element.offsetTop  || 0;
+        element = element.offsetParent;
+    } while(element);
+
+    top += e.nativeEvent.target.clientHeight+4
+    console.log("SSSSSSSS", e, e.view.outerHeight, e.nativeEvent.target.offsetTop, top)
+    
     this.enchantTableDom[index] = ( 
       <EnchantTable 
         ref={this.enchantTableRef[index]} 
@@ -226,8 +234,12 @@ export default class EquipSelector extends React.Component {
         parent={this} 
         data={filtered_enchantment_list} 
         target_enchant={this.equip_part.enchantments[index]} 
+        top={top}
       />);
-    return this.enchantTableDom[index];
+    this.parent.setState(currentState => ({
+      enchant_table: this.enchantTableDom[index]
+    }));
+    
   }
 
   MaterialInfo(){
@@ -253,6 +265,7 @@ export default class EquipSelector extends React.Component {
           material_tree[material_name] = _material_tree
           
           if(parent_name===material_name)continue;
+          if(_material==null || _material_tree==null)continue;
           
           check_material(_material["materials"], _material_tree["materials"], material_name, total_num);
         }
@@ -315,10 +328,14 @@ export default class EquipSelector extends React.Component {
     // tbodyDom.style.left = window.scrollX - sectionDom.offsetLeft + sectionDom.scrollLeft + e.clientX + 25 + "px";
     // tbodyDom.style.top = - sectionDom.offsetTop + sectionDom.scrollTop + e.clientY - 7 + "px";
     
-    let top = window.scrollY + e.clientY - 7 + "px";
-    let left =  window.scrollX + e.clientX + 25 + "px";
+    let enchantDom = document.querySelector('.enchantInfoBalloon');
+    enchantDom.style.left = window.scrollX + e.clientX + 25 + "px";
+    enchantDom.style.top = window.scrollY + e.clientY - 7 + "px";
+  }
+  
+  mouseOver(e, i){
     this.parent.setState(currentState => ({
-      enchantInfoBalloon: {top:top, left:left, data:this.enchantStatus[i]}
+      enchantInfoBalloon: this.enchantStatus[i]
     }));
   }
 
@@ -339,7 +356,7 @@ export default class EquipSelector extends React.Component {
           {this.state.targetEquip && (
             <>
               {this.MaterialInfo()}
-              <div className="equipName">{this.state.targetEquip.name}</div>
+              <div className={"equipName equip_rarelity_"+this.state.targetEquip["rarelity"]}>{this.state.targetEquip.name}</div>
               <div className="equipStatus">
                 ATK:{this.state.targetEquip.atk}&nbsp;
                 MATK:{this.state.targetEquip.matk}&nbsp;
@@ -351,7 +368,13 @@ export default class EquipSelector extends React.Component {
         </div>
         <div className="inputEquip">
           <span className="clearEquip" onClick={(e)=>{this.clearEquip(e)}}>×</span>
-          <input type="search" id="name" name="name" autoComplete="off" size="25"  value={this.state.searchEquipText} onChange={this.handleEquipChange} onClick={this.openEquipModal}/>
+          <input type="search" id="name" name="name" autoComplete="off" size="25" 
+            className={(this.state.isEquipOpen)?"focus":""}
+            value={this.state.searchEquipText} 
+            placeholder="装備の名前を入力してください" 
+            onChange={this.handleEquipChange} 
+            onFocus={this.openEquipModal}
+          />
           {this.state.isEquipOpen && this.setEquipTable()}
         </div>
         <div className="enchantment_list">
@@ -361,17 +384,17 @@ export default class EquipSelector extends React.Component {
                 <div className="inputEnchant">
                   <span className="clearEnchant" onClick={(e)=>{this.clearEnchant(e, i)}}>×</span>
                   <input type="search" id="name" name="name" autoComplete="off" size="10" 
+                    className={(this.state.isEnchantOpens[i])?"focus":""}
                     value={this.state.searchEnchantTexts[i]} 
                     onChange={(e)=>{this.handleEnchantChange(i, e)}} 
-                    onClick={(e)=>{this.openEnchantModal(i, e)}}
+                    onFocus={(e)=>{this.openEnchantModal(i, e)}}
                   />
-                  {this.state.isEnchantOpens[i] && this.setEnchantTable(i)}
                 </div>
                 {this.equip_part.enchantments[i] && (
-                  <span className="enchantInfo" 
+                  <span className={"enchantInfo enchant_rarelity_"+this.equip_part.enchantments[i]["rarelity"]}
+                    onMouseOver={(e)=>{this.mouseOver(e, i)}} 
                     onMouseMove={(e)=>{this.mouseMove(e, i)}} 
-                    onMouseOut={(e)=>{this.mouseOut(e, i)}}
-                    style={{color:RARELITY_INFOS[this.equip_part.enchantments[i]["rarelity"]].color}}
+                    onMouseOut={(e)=>{this.mouseOut(e, i)}} 
                   >
                     {this.equip_part.enchantments[i]["name"]}
                   </span>
