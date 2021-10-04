@@ -888,7 +888,8 @@ export default class App extends React.Component {
           <article>
             <div>未実装機能</div>
             <ul>
-              <li>パッチ v20210930.1502　対応中</li>
+              <li>パッチ v20210930.1502 対応中</li>
+              <li>スマートフォン対応中</li>
               <li>アイテムを捧げた影響を設定する機能（物理クリティカルなど）</li>
             </ul>
           </article>

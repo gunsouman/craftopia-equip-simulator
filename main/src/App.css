@@ -183,7 +183,8 @@ input[type="number"]:focus,
 	text-align: 'left',
 }
 .fileFrame {
-	display: flex;
+    display: inline-block;
+	margin: auto;
 }
 .saveSection {
 	position: relative;
@@ -435,7 +436,6 @@ section.unimplemented ul{
 
 @media screen and (max-width: 768px) {
 	.fileFrame {
-		display:block;
 		padding: 5px;
 	}
 	.saveSection>*>*{
@@ -450,16 +450,23 @@ section.unimplemented ul{
 	.saveSection>.clearButton{
 		margin-right: 0px;;
 	}
+	.saveSection .confirm>*{
+		margin: auto;
+		margin-bottom: 7px;
+	}
+
 	section.main {
 		display: block;
 		padding: 10px 30px 0 5px;
 	}
 	section.main>* {
-		display: block;
+	    display: flex;
+    	flex-direction: column;
 	}
 	section.status {
 		display: block;
 		padding: 0;
+		order: 3;
 	}
 	article.totalStatus {
 		overflow-x: auto;
@@ -467,6 +474,7 @@ section.unimplemented ul{
 	section.equipSelectors {
 		display: block;
 		margin: 20px 0 0 0;
+		order: 2;
 	}
 	.equipmentFrame{
 		margin: 0px 0px 10px 0px;
@@ -482,6 +490,13 @@ section.unimplemented ul{
 	}
 	article{
 		box-shadow: 3px 4px 11px 0px #000000b3;
+	}
+	.equipTableSection{
+		width:100%;
+		left: 0;
+	}
+	.enchantTableSection{
+		left: 15px;
 	}
 	.equipTableCell{
 		display: block;
