@@ -668,7 +668,7 @@ export default class App extends React.Component {
 
         {(this.state.HoverSaveData!=null)&&(<div className="saveBalloon">{(this.state.HoverSaveData)}</div>)}
         
-        <header>Craftpia 装備シミュレーター</header>
+        <header>Craftopia 装備シミュレーター</header>
         <section className="saveSection">
           <div>
             {[...Array(5)].map((key, i) => { 
