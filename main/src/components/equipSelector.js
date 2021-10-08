@@ -225,7 +225,6 @@ export default class EquipSelector extends React.Component {
     } while(element);
 
     top += e.nativeEvent.target.clientHeight+4
-    console.log("SSSSSSSS", e, e.view.outerHeight, e.nativeEvent.target.offsetTop, top)
     
     this.enchantTableDom[index] = ( 
       <EnchantTable 

@@ -426,11 +426,15 @@ section.history .log{
 	padding: 5px;
 }
 
-section.unimplemented{
+section.unimplemented,
+section.caution
+{
 	margin: 10px auto 55px auto;
 	width: 90%;
 }
-section.unimplemented ul{
+section.unimplemented ul,
+section.caution ul
+{
 	text-align: left;
 }
 
@@ -495,8 +499,12 @@ section.unimplemented ul{
 		width:100%;
 		left: 0;
 	}
-	.enchantTableSection{
+	section.enchantTableSection.modalTable{
 		left: 15px;
+	}
+	section.equipTableSection tbody tr,
+	section.enchantTableSection tbody tr {
+		font-size: 15px;
 	}
 	.equipTableCell{
 		display: block;

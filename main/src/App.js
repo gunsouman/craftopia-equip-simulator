@@ -41,6 +41,10 @@ let ENCHANT_CONVERTER = {
   MATK割合: "matk_per",
   "DEFのN%ATK増加": "def_for_atk",
   "DEFのN%MATK増加": "def_for_matk",
+  "ライフのN%ATK増加": "life_for_atk",
+  "ライフのN%MATK増加": "life_for_matk",
+  "マナのN%ATK増加": "mana_for_atk",
+  "マナのN%MATK増加": "mana_for_matk",
   DEF: "def",
   DEF割合: "def_per",
   最大スタ: "stamina",
@@ -203,19 +207,27 @@ let per_status ={
 
 let unique_status = {
   atk:{
-    def_for_atk:0,
+    def:0,
+    life:0,
+    mana:0,
   },
   matk:{
-    def_for_matk:0,
+    def:0,
+    life:0,
+    mana:0,
   }
 }
 
 let unique_result_status = {
   atk:{
-    def_for_atk:0,
+    def:0,
+    life:0,
+    mana:0,
   },
   matk:{
-    def_for_matk:0,
+    def:0,
+    life:0,
+    mana:0,
   }
 }
 
@@ -304,13 +316,14 @@ export default class App extends React.Component {
             per_status[key] += value
           }
 
-          for(let key1 of Object.keys(unique_status)){
-            for(let key2 of Object.keys(unique_status[key1])){
-              if (unique_status[key1][key]!=null){
-                unique_status[key1][key2] += value
+          for(let unique_key1 of Object.keys(unique_status)){
+            for(let unique_key2 of Object.keys(unique_status[unique_key1])){
+              if (key === unique_key2+"_for_"+unique_key1){
+                unique_status[unique_key1][unique_key2] += value
               }
             }
           }
+
         }
         // console.log("equip_part", equip_part)
         for(let skill_name of Object.keys(equip_part.target["skill"])){
@@ -340,13 +353,14 @@ export default class App extends React.Component {
             per_status[key] += value
           }
 
-          for(let key1 of Object.keys(unique_status)){
-            for(let key2 of Object.keys(unique_status[key1])){
-              if (unique_status[key1][key]!=null){
-                unique_status[key1][key2] += value
+          for(let unique_key1 of Object.keys(unique_status)){
+            for(let unique_key2 of Object.keys(unique_status[unique_key1])){
+              if (key === unique_key2+"_for_"+unique_key1){
+                unique_status[unique_key1][unique_key2] += value
               }
             }
           }
+
         }
         
         for(let skill_name of Object.keys(enchantment["skill"])){
@@ -361,6 +375,19 @@ export default class App extends React.Component {
     
     for (let key of Object.keys(res)){
       res[key] += addition_status[key]
+    }
+
+    for(let unique_key1 of Object.keys(unique_status)){
+      for(let unique_key2 of Object.keys(unique_status[unique_key1])){
+        if(unique_status[unique_key1][unique_key2]!==0){
+
+          unique_result_status[unique_key1][unique_key2] = Math.round(res[unique_key2]*unique_status[unique_key1][unique_key2]/100);
+          res[unique_key1] += unique_result_status[unique_key1][unique_key2];
+        }
+      }
+    }
+    
+    for (let key of Object.keys(res)){
 
       if(key in multiply_per_status){
         multiply_per_sum_status[key] = Math.round(((addition_status[key]<0)?0:addition_status[key])*multiply_per_status[key]*0.01)
@@ -373,19 +400,6 @@ export default class App extends React.Component {
       }
     }
 
-    for (let key of Object.keys(res)){
-      if(unique_status[key]){
-        for(let key2 of Object.keys(unique_status[key])){
-          if(key2 === "def_for_atk"){
-            unique_result_status[key][key2] = Math.round(res["def"]*unique_status[key][key2]/100);
-            res[key] += unique_result_status[key][key2];
-          }else if(key2 === "def_for_matk"){
-            unique_result_status[key][key2] = Math.round(res["def"]*unique_status[key][key2]/100);
-            res[key] += unique_result_status[key][key2];
-          }
-        }
-      }
-    }
     for (let key of Object.keys(res)){
       res[key] = Math.round(res[key]);
     }
@@ -447,7 +461,7 @@ export default class App extends React.Component {
     
     const strage_index = "save_"+index;
     const savedata_str = localStorage.getItem(strage_index);
-    console.log(strage_index, savedata_str)
+
     if (savedata_str ==null){
       this.clearAll();
       return;
@@ -609,8 +623,6 @@ export default class App extends React.Component {
       }
     }
 
-    console.log("DDDD", res)
-
     this.setState({HoverSaveData:<div>{res}</div>});
 
   }
@@ -643,6 +655,7 @@ export default class App extends React.Component {
                 if(Object.keys(self.state.enchantInfoBalloon).indexOf(key)!==-1 
                   && self.state.enchantInfoBalloon[key]!==0
                   && key!=="name"
+                  && key!=="rarelity"
                 ){
                   let value = self.state.enchantInfoBalloon[key]
                   return <div key={"ENCHANT_BALLOON"+column["Header"]}><span>{column["Header"]}</span>: {value}</div>
@@ -770,12 +783,12 @@ export default class App extends React.Component {
                               (unique_status[key]!=null)?
                               Object.keys(unique_status[key]).map((key2, j)=>{
                                 if(unique_status[key][key2]!=null && unique_status[key][key2]!==0)
-                                  return `${UNIQUE_LABELS[key2]} ${unique_status[key][key2]}(+${unique_result_status[key][key2]})`
+                                  return <div>{UNIQUE_LABELS[key2+"_for_"+key]} {unique_status[key][key2]}%(+{unique_result_status[key][key2]})</div>
                               }):""
                             }</td>
                             <td>
-                              {(this.state.result_status[key]<0)?0:this.state.result_status[key]}
-                              <span className="over">{(this.state.result_status[key]<0)?`(${this.state.result_status[key]})`:""}</span>
+                              {(this.state.result_status[key]<1)?1:this.state.result_status[key]}
+                              <span className="over">{(this.state.result_status[key]<1)?`(${this.state.result_status[key]-1})`:""}</span>
                             </td>
                           </tr>
                         )
@@ -789,7 +802,7 @@ export default class App extends React.Component {
                               (unique_status[key]!=null)?
                               Object.keys(unique_status[key]).map((key2, j)=>{
                                 if(unique_status[key][key2]!=null && unique_status[key][key2]!==0)
-                                  return `${UNIQUE_LABELS[key2]} ${unique_status[key][key2]}(+${unique_result_status[key][key2]})`
+                                return <div>{UNIQUE_LABELS[key2+"_for_"+key]} {unique_status[key][key2]}%(+{unique_result_status[key][key2]})</div>
                               }):""
                             }</td>
                             <td>
@@ -874,12 +887,25 @@ export default class App extends React.Component {
 
         <MaterialTreeSection ref={this.materialTreeRefs} equip_parts={equip_parts} parent={this} />
         
+        <section className="caution">
+          <article>
+            <div>注意点</div>
+            <ul>
+              <li>アイテムを捧げることによって増加するステータスについては対応しておりません。</li>
+            </ul>
+          </article>
+        </section>
+
+
         <section className="history">
           <article>
             <div>履歴</div>
             <div className="log">
               
-              <div>2021/09/29: 実装</div>
+              <div><span style={{width: "95px",display:"inline-block"}}>2021/10/08:</span>エンチャントマウスオーバー時の座標修正</div>
+              <div><span style={{width: "95px",display:"inline-block"}}></span>素材修正</div>
+              <div><span style={{width: "95px",display:"inline-block"}}></span>エンチャント追加</div>
+              <div><span style={{width: "95px",display:"inline-block"}}>2021/09/29:</span>実装</div>
             </div>
           </article>
         </section>
@@ -890,13 +916,12 @@ export default class App extends React.Component {
             <ul>
               <li>パッチ v20210930.1502 対応中</li>
               <li>スマートフォン対応中</li>
-              <li>アイテムを捧げた影響を設定する機能（物理クリティカルなど）</li>
             </ul>
           </article>
         </section>
 
         <footer>
-          <span>last update: 2021/9/24</span>
+          <span>last update: 2021/10/8</span>
           <span>ゲームver：{Info.gamepatch}</span>
           <span>情報は <a href="https://seesaawiki.jp/craftopia/">Craftopia/クラフトピア Wiki</a> 様を参考にさせていただいております。</span>
         </footer>

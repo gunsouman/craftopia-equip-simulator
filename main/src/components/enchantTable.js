@@ -5,6 +5,7 @@ import "./enchantTable.css"
 import Config from '../configs/configs.json'; // 追加
 const ENCHANTMENT_COLUMNS = Config.ENCHANTMENT_COLUMNS
 const TABLE_LIMIT = Config.TABLE_LIMIT
+const RARELITY_INFOS = Config.RARELITY_INFOS
 
 export default  forwardRef((props, ref) => {
   let originEnchants = props["data"]
@@ -31,7 +32,6 @@ export default  forwardRef((props, ref) => {
     }else{
       sort_obj = {column: column, type: "desc"}
     }
-
 
     setSortStatus(sort_obj)
     
@@ -72,7 +72,7 @@ export default  forwardRef((props, ref) => {
   const mouseMove = (e) => {
     let elements = [].slice.call( e.target.closest("tbody").children ) ;
 
-    let index = elements.indexOf( e.target.closest("tr") )-1;
+    let index = elements.indexOf( e.target.closest("tr") );
     
     setTargetEnchant(enchants[index])
 
@@ -82,45 +82,46 @@ export default  forwardRef((props, ref) => {
     }
     
     tbodyDom.style.left = window.scrollX - sectionDom.offsetLeft + sectionDom.scrollLeft + e.clientX + 25 + "px";
-    tbodyDom.style.top = - sectionDom.offsetTop + sectionDom.scrollTop + e.clientY - 7 + "px";
+    tbodyDom.style.top = window.scrollY - sectionDom.offsetTop + sectionDom.scrollTop + e.clientY - 7 + "px";
   }
 
   const dom = (
     <section className="enchantTableSection modalTable" style={{ top:props["top"]}}>
       <div className="tableMaster" onScroll={trackScrolling}>
-            <span className="balloon" style={{display:targetEnchant?"block":""}}>
-              {
-                (function () {
-                  let datas = ENCHANTMENT_COLUMNS.map((column) => {
-                    let key = column["accessor"]
-                    if(targetEnchant!=null && Object.keys(targetEnchant).indexOf(key)!==-1 
-                      && targetEnchant[key]!==0
-                      && key!=="name"
-                    ){
-                      let value = targetEnchant[key]
-                      return <div key={column["accessor"]+"_balloon"}>{column["Header"]}: {value}</div>
-                    }else{
-                      return null;
-                    }
+          <span className="balloon" style={{display:targetEnchant?"block":""}}>
+            {
+              (function () {
+                let datas = ENCHANTMENT_COLUMNS.map((column) => {
+                  let key = column["accessor"]
+                  if(targetEnchant!=null && Object.keys(targetEnchant).indexOf(key)!==-1 
+                    && targetEnchant[key]!==0
+                    && key!=="name"
+                    && key!=="rarelity"
+                  ){
+                    let value = targetEnchant[key]
+                    return <div key={column["accessor"]+"_balloon"}>{column["Header"]}: {value}</div>
+                  }else{
+                    return null;
+                  }
+                })
+
+                if(targetEnchant!=null && targetEnchant["skill"]!=null){
+                  let skills = Object.keys(targetEnchant["skill"]).map((skill_name)=>{
+                    return <div key={"skill_"+skill_name+"_balloon"}>スキル：{skill_name} Lv{targetEnchant["skill"][skill_name]}</div>
                   })
+                  datas = datas.concat(skills)
+                }
 
-                  if(targetEnchant!=null && targetEnchant["skill"]!=null){
-                    let skills = Object.keys(targetEnchant["skill"]).map((skill_name)=>{
-                      return <div key={"skill_"+skill_name+"_balloon"}>スキル：{skill_name} Lv{targetEnchant["skill"][skill_name]}</div>
-                    })
-                    datas = datas.concat(skills)
-                  }
+                datas = datas.filter((n) => { return n !== null });
 
-                  datas = datas.filter((n) => { return n !== null });
+                if(datas.length===0){
+                  datas.push(<div key={"balloon"}>(なし)</div>)
+                }
 
-                  if(datas.length===0){
-                    datas.push(<div>(なし)</div>)
-                  }
-
-                  return datas
-                }())
-              }
-            </span>
+                return datas
+              }())
+            }
+          </span>
         <table className="enchantTable">
           <thead>
             <tr>
@@ -133,39 +134,6 @@ export default  forwardRef((props, ref) => {
             </tr>
           </thead>
           <tbody onMouseMove={(e)=>{mouseMove(e)}} onMouseEnter={(e)=>{mouseMove(e)}}>
-            {/* <span className="balloon">
-              {
-                (function () {
-                  let datas = ENCHANTMENT_COLUMNS.map((column) => {
-                    let key = column["accessor"]
-                    if(targetEnchant!=null && Object.keys(targetEnchant).indexOf(key)!==-1 
-                      && targetEnchant[key]!==0
-                      && key!=="name"
-                    ){
-                      let value = targetEnchant[key]
-                      return <div key={column["accessor"]+"_balloon"}>{column["Header"]}: {value}</div>
-                    }else{
-                      return null;
-                    }
-                  })
-
-                  if(targetEnchant!=null && targetEnchant["skill"]!=null){
-                    let skills = Object.keys(targetEnchant["skill"]).map((skill_name)=>{
-                      return <div key={"skill_"+skill_name+"_balloon"}>スキル：{skill_name} Lv{targetEnchant["skill"][skill_name]}</div>
-                    })
-                    datas = datas.concat(skills)
-                  }
-
-                  datas = datas.filter((n) => { return n !== null });
-
-                  if(datas.length===0){
-                    datas.push(<div>(なし)</div>)
-                  }
-
-                  return datas
-                }())
-              }
-            </span> */}
             {enchants.map(enchant => {
               let selected = false;
               for(let targetEnchant of props["parent"].equip_part.enchantments){
@@ -183,9 +151,9 @@ export default  forwardRef((props, ref) => {
                 >
                   {ENCHANTMENT_COLUMNS.map((column, i) => (
                     <td key={"ENCHANT_TD_"+enchant["name"]+"_"+column["accessor"]}
-                      className={((column.accessor==="name")?"enchant_rarelity_"+enchant["rarelity"]:"") + " " + column["type"]}
+                      className={((column.accessor==="name" || column.accessor==="rarelity")?"enchant_rarelity_"+enchant["rarelity"]:"") + " " + column["type"]}
                     >
-                      {enchant[column.accessor]}
+                      {(column["type"]==="rarelity")?RARELITY_INFOS[enchant[column.accessor]]["name"]:enchant[column.accessor]}
                     </td>
                   ))}
                 </tr>

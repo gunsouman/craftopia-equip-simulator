@@ -44,6 +44,12 @@
                 "type":"string"
             },
             {
+                "Header": "レア度",
+                "accessor": "rarelity",
+                "sortType": "basic",
+                "type":"rarelity"
+            },
+            {
                 "Header": "ATK",
                 "accessor": "atk",
                 "sortType": "basic",
@@ -204,6 +210,30 @@
                 "accessor": "def_for_matk",
                 "sortType": "basic",
                 "type":"number"
+            },
+            {
+                "Header": "ライフをATKに加算(%)",
+                "accessor": "life_for_atk",
+                "sortType": "basic",
+                "type":"number"
+            },
+            {
+                "Header": "ライフをMATKに加算(%)",
+                "accessor": "life_for_matk",
+                "sortType": "basic",
+                "type":"number"
+            },
+            {
+                "Header": "マナをATKに加算(%)",
+                "accessor": "mana_for_atk",
+                "sortType": "basic",
+                "type":"number"
+            },
+            {
+                "Header": "マナをMATKに加算(%)",
+                "accessor": "mana_for_matk",
+                "sortType": "basic",
+                "type":"number"
             }
     ],
     "INPUT_STATUS_LABELS":{
@@ -253,7 +283,11 @@
     },
     "UNIQUE_LABELS":{
         "def_for_atk":"防御反映",
-        "def_for_matk":"防御反映"
+        "def_for_matk":"防御反映",
+        "life_for_atk":"ライフ反映",
+        "life_for_matk":"ライフ反映",
+        "mana_for_atk":"マナ反映",
+        "mana_for_matk":"マナ反映"
     },
     "EQUIP_STATUS_KEY_LABELS":{
         "name":"アイテム名", 
